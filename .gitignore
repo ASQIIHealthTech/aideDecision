@@ -1,3 +1,4 @@
 deploy/.env
 api/target
 .vscode
+.fake

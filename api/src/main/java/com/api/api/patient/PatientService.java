@@ -14,13 +14,35 @@ public class PatientService {
         this.patientRepository = patientRepository;
     }
 
-    // TODO: exception handling
-    public Patient savePatient(Patient patient) {
-        return patientRepository.save(patient);
+    public void savePatient(Patient patient) throws PatientExcecption {
+        Optional<Patient> patientOptional = patientRepository.findPatientByDmi(patient.getDMI());
+        if (patientOptional.isPresent()) {
+            throw new PatientExcecption("Patient Already Exists!!");
+        }
+
+        patientRepository.save(patient);
     }
 
     public List<Patient> getPatients() {
         return patientRepository.findAll();
+    }
+
+    public Optional<Patient> getPatientByDMI(String dmi) throws PatientExcecption {
+        Optional<Patient> patientOptional = patientRepository.findPatientByDmi(dmi);
+        if (patientOptional.isEmpty()) {
+            throw new PatientExcecption("Patient does not exist!!");
+        } else {
+            return patientOptional;
+        }
+    }
+
+    public Optional<Patient> getPatientByNomAndPrenom(String nom, String prenom) throws PatientExcecption{
+        Optional<Patient> patientOptional = patientRepository.findPatientByNomAndPrenom(nom, prenom);
+        if (patientOptional.isEmpty()) {
+            throw new PatientExcecption("Patient does not exists!");
+        } else {
+            return patientOptional;
+        }
     }
 
     public Optional<Patient> getPatient(Long id) {

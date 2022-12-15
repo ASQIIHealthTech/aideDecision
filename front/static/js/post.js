@@ -67,6 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
             element_values.set(element.getAttribute("name"), element.value);
         });
 
+        console.log(Object.fromEntries(element_values));
         fetch(save_patient_url, {
             method: "post",
             headers: {

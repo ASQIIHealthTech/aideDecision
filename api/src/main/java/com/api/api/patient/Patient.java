@@ -114,7 +114,7 @@ public class Patient {
 
     @Override
     public String toString() {
-        return "Patient [Nom=" + nom + ", Prenon=" + prenom + ", DMI=" + dmi + ", dataNaissance=" + dateNaissance
+        return "Patient [Nom=" + nom + ", Prenom=" + prenom + ", DMI=" + dmi + ", dataNaissance=" + dateNaissance
                 + ", sexe=" + sexe + ", CancerType=" + cancerType + ", consultations=" + consultations + "]";
     }
 
