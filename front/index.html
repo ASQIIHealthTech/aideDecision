@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Aide à la décision</title>
+    <link href="static/css/styles.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+
+</head>
+
+<body>
+    <script type="jquery-3.6.1.min.js"></script>
+    <script type="bootstrap.min.js"></script>
+    <script type="text/javascript" src="static/js/post.js"></script>
+
+    <div class="global">
+        <header>
+            <div class="row">
+                <div class="col-sm-8">
+                    <img src="static/img/Asqii.png" alt height="50px" />
+                </div>
+                <div class="col-sm-4">
+                    <p class="titre1">AIDE A LA DECISION</p>
+                </div>
+            </div>
+        </header>
+
+        <center>
+            <br><br>
+            <h2>Fiche Patient</h2>
+            <form >
+                <input type="hidden" name="order" value="new">
+                <label for="poid">Nom :</label>
+                <input type="text" name="nom" class="save" required>
+                <br>
+                <label for="poid">Prenom :</label>
+                <input type="text" name="prenom" class="save" required>
+                <br>
+                <label for="cin">DMI :</label>
+                <input type="number" name="dmi" class="save" required>
+                <br>
+                <label for="date_naissance">Date naissance :</label>
+                <input type="date" name="dateNaissance" id="date_naissance" class="save" required>
+                <label for="sexe">Sexe :</label>
+                <select name="sexe" id="sexe" class="save">
+                    <option value="Homme">Homme</option>
+                    <option value="Femme">Femme</option>
+                </select>
+                <br><br><br>
+                <label for="type_cancer_patient">Type cancer :</label>
+                <select name="cancerType" class="save" id="type_cancer_patient">
+                    <option value="Sein">Sein</option>
+                    <option value="Poumon">Poumon</option>
+                    
+                </select>
+                <br><br>
+                
+                <input id="save-btn-pat" type="button" name="btn-enquete-genetique" value="Continuer" class="btn">
+            
+        </center>
+  
+    </div>
+</body>
+
+</html>

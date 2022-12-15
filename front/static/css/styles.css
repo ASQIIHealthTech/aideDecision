@@ -1,0 +1,221 @@
+body{
+  font-family: 'Montserrat';
+  font-size: 16px;
+  padding-left: 0;
+}
+
+.global{
+  overflow:hidden;
+
+}
+
+
+div{
+  color:#4083E5;
+    font-size:18px;
+    break-inside: avoid;
+   page-break-inside: avoid;
+
+}
+
+label{
+  color:#26326a;
+  font-size:18px;
+
+
+
+}
+
+
+input, textarea, select {
+ padding:3px;
+ border:1px solid #DCEBFD;
+ border-radius:5px;
+ width:300px;
+ background: #DCEBFD;
+ margin : 20px;
+ margin-right: 50px;
+
+ }
+
+ input[type=submit], input[type=reset] {
+
+  margin-left:5px;
+
+  cursor:pointer;
+   background: #4083E5;
+   color:white;
+   font-weight: bold;
+   padding:10 20px;
+   margin-top: 20px;
+  }
+
+header{
+  background-color: #26326a;
+  padding: 15px;
+  height: 100px;
+
+
+}
+
+header img{
+  margin-top: 10px;
+}
+
+.titre1{
+  font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 25px;
+line-height: 49px;
+text-align: right;
+color: #6EC6DB;
+}
+
+.titre5{
+  font-family: 'Montserrat';
+  font-style: normal;
+
+  font-size: 20px;
+  line-height: 49px;
+  text-align: right;
+  margin-top: -35px;
+  color: #FFFFFF;
+}
+
+.scroll {
+  overflow-x: scroll;
+  white-space: nowrap;
+  background-color: #D9D9D9;
+
+
+}
+
+.icone{
+  text-align: center;
+  color:#233368;
+  padding-top: 15px;
+
+
+}
+
+.titre4{
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 500;
+font-size: 22px;
+line-height: 27px;
+padding-top: 15px;
+font-weight: 600;
+color: #233368;
+}
+
+.lecture_header{
+background-color: #D9D9D9;
+margin-right: -15px;
+
+
+
+}
+
+.lecture_section{
+background-color: #E8E7E7;
+height: 700px;
+
+
+color:#233368;
+font-size: 18;
+padding-left: 0;
+font-weight: bold;
+
+column-width: 200px;
+
+
+}
+
+
+
+
+h6{
+  color:#2874E5;
+  font-size: 18px;
+}
+
+
+
+.resultat{
+  color:#2663EE;
+  font-size:20Px;
+  font-weight: 500;
+  width: 100%;
+
+
+}
+
+.indication{
+  color:#233368;
+  background-color: #6EC6DB;
+  font-size:20Px;
+  padding: 10px;
+  font-weight: 700;
+  width: 100%;
+}
+
+.saisie_section{
+padding: 50px ;
+padding-left: 50px ;
+
+
+
+}
+
+.btn-gros{
+  background-color:#4083E5;
+  color:white;
+
+  padding: 20px;
+
+}
+
+.btn-actif {
+  background-color: #4083E5;
+}
+
+.fluo{background-color:#6EC6DB; color:#26326a;}
+
+
+.red{
+  color:#6EC6DB;
+}
+
+.cure{
+  width:200px;
+  padding: 5px;
+  font-size: 14px;
+  font-weight: normal;
+
+
+}
+
+.calculated {
+  color: #2874E5;
+}
+
+.save-btn {
+  background-color: #D9D9D9;
+  border: none;
+  
+}
+
+.save-btn:hover {
+  color: #2874E5;
+  
+}
+
+.error-text {
+  padding-top: 15px;
+  text-align: center;
+  color: red;
+  font-weight: normal;
+}
+

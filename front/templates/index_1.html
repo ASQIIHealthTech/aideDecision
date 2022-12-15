@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Aide à la décision</title>
+  <link rel="stylesheet" href="../static/css/styles.css">
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+  <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+  <script type="text/javascript" src="../static/js/entryPoint.js"></script>
+  <script type="module" src="../static/js/conditions.js"></script>
+  <script type="module" src="../static/js/navigation.js"></script>
+  <script type="text/javascript" src="../static/js/post.js"></script>
+</head>
+
+
+<body>
+  <script type="jquery-3.6.1.min.js"></script>
+  <script type="bootstrap.min.js"></script>
+
+  <script type="text/javascript">
+    function disableGyneco(sexe) {
+      localStorage.setItem("sexe", sexe.value);
+    }
+  </script>
+
+  <script type="text/javascript">
+    function openOnglet(event, ongletName, id) {
+      var i, tabDiv, tabBtn, onglets;
+      tabDiv = document.getElementsByClassName(id);
+      tabBtn = document.getElementsByClassName("btn");
+      for (i = 0; i < tabDiv.length; i++) {
+        tabDiv[i].style.display = "none";
+      }
+      for (i = 0; i < tabBtn.length; i++) {
+        tabBtn[i].classList.replace("btn-primary", "btn-light");
+      }
+      onglets = document.getElementsByClassName(id);
+      for (i = 0; i < tabDiv.length; i++) {
+        onglets[i].className = onglets[i].className.replace(" actif", "");
+      }
+
+      document.getElementById(ongletName).style.display = "block";
+      event.currentTarget.className += "actif";
+      event.currentTarget.classList.replace("btn-light", "btn-primary");
+    }
+  </script>
+
+  <script type="text/javascript">
+    function histComb(element) {
+      if (element.value == "cpc") {
+        if (parseInt(localStorage.getItem("paquet-annee")) < 15) {
+          document.getElementById("pdl1").disabled = true;
+          document.getElementById("egfr").disabled = true;
+          document.getElementById("rea").disabled = false;
+          document.getElementById("ros1").disabled = false;
+          document.getElementById("braf").disabled = false;
+          document.getElementById("ntrk").disabled = false;
+        } else {
+          document.getElementById("rea").disabled = true;
+          document.getElementById("ros1").disabled = true;
+          document.getElementById("braf").disabled = true;
+          document.getElementById("ntrk").disabled = true;
+          document.getElementById("egfr").disabled = true;
+          document.getElementById("pdl1").disabled = false;
+        }
+      }
+      if (element.value == "cncp") {
+        document.getElementById("hist-type").disabled = false;
+      } else {
+        document.getElementById("hist-type").disabled = true;
+      }
+    }
+  </script>
+
+  <script type="text/javascript">
+    function histComb_(element) {
+      if (element.value == "Adénocarcinome") {
+        document.getElementById("pdl1").disabled = false;
+        document.getElementById("egfr").disabled = false;
+        document.getElementById("rea").disabled = false;
+        document.getElementById("ros1").disabled = false;
+        document.getElementById("braf").disabled = false;
+        document.getElementById("ntrk").disabled = false;
+      } else {
+        document.getElementById("pdl1").disabled = false;
+        document.getElementById("egfr").disabled = true;
+        document.getElementById("rea").disabled = true;
+        document.getElementById("ros1").disabled = false;
+        document.getElementById("braf").disabled = false;
+        document.getElementById("ntrk").disabled = false;
+      }
+    }
+  </script>
+
+  <script type="text/javascript">
+    function disbleChoice(element, id) {
+      if (element.value = "Non") {
+        document.getElementById(id).setAttribute("hidden", "");
+      } else {
+        document.getElementById(id).removeAttribute("hidden");
+      }
+    }
+  </script>
+
+  <div class="global">
+
+    <header>
+      <div class="row">
+        <div class="col-sm-8">
+          <img src="../static/img/Asqii.png" alt height="50px" />
+        </div>
+        <div class="col-sm-4">
+          <p class="titre1">AIDE A LA DECISION</p>
+          <p class="titre5">Cancer du Poumon </p>
+        </div>
+      </div>
+    </header>
+
+
+
+    <nav id="navbar">
+      <div class="row">
+        <div class="col-sm-8 saisie_header">
+          <div class="row">
+            <div class="scroll">
+              <button id="profile-h" class="btn btn-primary col-sm-1"
+                onclick="openOnglet(event, 'profil', 'onglet')">Profil</button>
+              <button id="habitude-h" class="btn btn-light col-sm-1"
+                onclick="openOnglet(event, 'habitudes', 'onglet')">Habitudes</button>
+              <button id="antcd-h" class="btn btn-light col-sm-1"
+                onclick="openOnglet(event, 'antcd', 'onglet');" >Antécédents</button>
+              <button id="clinique-h" class="btn btn-light col-sm-1"
+                onclick="openOnglet(event, 'clinique', 'onglet');">Clinique</button>
+              <button id="examen-h" class="btn btn-light col-sm-1"
+                onclick="openOnglet(event, 'examen', 'onglet');">Examens</button>
+              <button id="imagerie-h" class="btn btn-light col-sm-1"
+                onclick="openOnglet(event, 'imagerie', 'onglet');" >Imagerie</button>
+              <button id="diag-h" class="btn btn-light col-sm-2"
+                onclick="openOnglet(event, 'diagnostic-histologique', 'onglet');" >diagnostic histologique</button>
+              <button id="ctnm-h" class="btn btn-light col-sm-1" onclick="openOnglet(event, 'ctnm', 'onglet');">cTNM</button>
+              <button id="antomo-h" class="btn btn-light col-sm-1"
+                onclick="openOnglet(event, 'anatomo', 'onglet');">Anatomopathologie</button>
+              <button id="bilan-h" class="btn btn-light col-sm-1" onclick="openOnglet(event, 'bilan-extension', 'onglet');" >Bilan
+                d'extention</button>
+              <button id="bilan-pre-h" class="btn btn-light col-sm-1" onclick="openOnglet(event, 'bilan-pre', 'onglet');" >Bilan
+                préopératoire et pré-radiothérapie</button>
+              <button id="traitement-h" class="btn btn-light col-sm-1"
+                onclick="openOnglet(event, 'traitement', 'onglet');">Traitement</button>
+              <button id="protocole-h" class="btn btn-light col-sm-1"
+                onclick="openOnglet(event, 'protocole', 'onglet');">Protocole</button>
+              <button id="ordonnance-h" class="btn btn-light col-sm-1"
+                onclick="openOnglet(event, 'ordonnance', 'onglet');">Ordonnance</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-3 lecture_header">
+          <h4 class="titre4">Fiche Patient: X</h4>
+        </div>
+        <div class="col-sm-1 lecture_header">
+          <h4 class="icone">
+            <button id="save-btn" class="save-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-save" viewBox="0 0 16 16">
+                <path
+                  d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z" />
+              </svg></button>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-stack"
+              viewBox="0 0 16 16">
+              <path
+                d="m14.12 10.163 1.715.858c.22.11.22.424 0 .534L8.267 15.34a.598.598 0 0 1-.534 0L.165 11.555a.299.299 0 0 1 0-.534l1.716-.858 5.317 2.659c.505.252 1.1.252 1.604 0l5.317-2.66zM7.733.063a.598.598 0 0 1 .534 0l7.568 3.784a.3.3 0 0 1 0 .535L8.267 8.165a.598.598 0 0 1-.534 0L.165 4.382a.299.299 0 0 1 0-.535L7.733.063z" />
+              <path
+                d="m14.12 6.576 1.715.858c.22.11.22.424 0 .534l-7.568 3.784a.598.598 0 0 1-.534 0L.165 7.968a.299.299 0 0 1 0-.534l1.716-.858 5.317 2.659c.505.252 1.1.252 1.604 0l5.317-2.659z" />
+            </svg>
+          </h4>
+        </div>
+      </div>
+    </nav>
+
+    <section id="form-fiche">
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="container">
+            <div class="row">
+
+              <!-- Onglet section -->
+              <div class="col-sm-12 saisie_section">
+
+                <div id="profil" class="onglet">
+                  <h2>Profil</h2>
+
+                  <label for="age">Age :</label>
+                  <input type="number" name="age" id="age" placeholder="18" min="18" max="100" required>
+                  <br>
+
+                  <label for="sexe">Sexe :</label>
+                  <select name="sexe" id="sexe-select" onchange="disableGyneco(this);">
+                    <option value="Homme">Homme</option>
+                    <option value="Femme">Femme</option>
+                  </select>
+                  <br>
+                  <input id="profil-continue" type="submit" name="btn-enquete-genetique" value="Continuer" class="btn">
+
+                </div>
+
+                <div id="habitudes" class="onglet">
+                  <h2>Habitudes</h2>
+                  <label for="tabac-actif">Tabagisme actif :</label>
+                  <select name="tabagismeActif" id="tabac-actif" class="save">
+                    <option value="Oui">Oui</option>
+                    <option value="Non">Non</option>
+                  </select>
+                  <label id="pa-label" for="pa"> Paquet année:</label>
+                  <input type="number" name="paquetAnnee" id="pa" class="save" placeholder="PA" min="1" max="40"
+                    style="width:100px;" required>
+                  <br>
+                  <label for="tabac-passif" id="tabac-passif-label" hidden>Tabagisme passif :</label>
+                  <select name="tabagismePassif" id="tabac-passif" class="save" hidden>
+                    <option value="Oui">Oui</option>
+                    <option value="Non ">Non</option>
+                  </select>
+                  <br>
+                  <label for="servage" id="servage-label"> Sevrage : </label>
+                  <select id="servage" name="sevrage" class="save">
+                    <option value="Non">Non</option>
+                    <option value="Oui">Oui</option>
+                  </select>
+                  <label id="temps-label" hidden>Depuis quand: </label>
+                  <input id="temps-id" type="number" placeholder="ans" hidden>
+                  <br>
+                  <label for="neffa">Neffa :</label>
+                  <select name="neffa" id="neffa" name="">
+                    <option value="Non">Non</option>
+                    <option value="Oui">Oui</option>
+                  </select>
+                  <br>
+                  <label for="tabouna">Tabouna :</label>
+                  <select name="tabouna" id="tabouna" class="save">
+                    <option value="Non">Non</option>
+                    <option value="Oui">Oui</option>
+                  </select>
+                  <br>
+                  <label for="exposition-profesionel">Exposition professionnelle à des cancérogènes :</label>
+                  <select name="exposition" id="exposition-profesionel" class="save">
+                    <option value="Non">Non</option>
+                    <option value="Oui">Oui</option>
+                  </select>
+                  <br>
+                  <input type="submit" id="habitude-continue" name="habitudes-btn" value="Continuer" class="btn">
+
+                </div>
+                <div id="antcd" class="onglet">
+                  <h2>Antécédents</h2>
+                  <label for="atcd-medicaux">ATCD Médicaux :</label>
+                  <select name="atcdMedicaux" id="atcd-medicaux" class="save" multiple>
+                    <option value="Insuffisance respiratoire">Insuffisance respiratoire</option>
+                    <option value="Cancer">Cancer</option>
+                    <option value="pathologie cardiovasculaire">Pathologie cardiovasculaire</option>
+                    <option value="autre">Autre</option>
+                  </select>
+                  <br>
+
+                  <label for="atcd-chirurgicaux">ATCD Chirurgicaux :</label>
+                  <select name="atcdChirurgicaux" id="atcd-chirurgicaux" class="save">
+                    <option value="Non">Non</option>
+                    <option value="Oui">Oui</option>
+                  </select>
+                  <br>
+
+                  <label for="radio_thoracique">Radiothérapie thoracique :</label>
+                  <select name="radioTherapieThoracique" id="radio_thoracique" class="save">
+                    <option value="Non">Non</option>
+                    <option value="Oui">Oui</option>
+                  </select>
+
+                  <br>
+
+                  <label for="atcd-familiaux">Antécédents familiaux de néoplasie :</label>
+                  <select name="atcdFamiliaux" id="atcd-familiaux" class="save">
+                    <option value="Non">Non</option>
+                    <option value="Oui">Oui</option>
+                  </select>
+
+
+                  <br>
+
+                  <input id="atcd-continue" type="submit" name="atcd" value="Continuer" class="btn">
+                </div>
+
+                <div id="clinique" class="onglet">
+                  <h2>Circonstances de découverte Clinique</h2>
+                  <label for="symptomes-respiratoires">Symptômes respiratoires :</label>
+                  <select name="symptomesRespiratoires" id="symptomes-respiratoires" class="save" multiple>
+                    <option value="Toux chronique">Toux chronique</option>
+                    <option value="Dyspnée">Dyspnée</option>
+                    <option value="Hémoptysie">Hémoptysie </option>
+                    <option value="Pneumopathie">Pneumopathie</option>
+                  </select>
+
+
+                  <label id="temp-id" for="temps-symptomes_respiratoires">Depuis Combien de semaines ?</label>
+                  <input type="number" name="temps-signe-associe" id="temps-signe-associe" placeholder="semaines"
+                    min="1" max="24" value="0" disabled>
+                  <br>
+
+                  <label for="envahissement-local">Signes d'envahissement local et régional :</label>
+                  <select name="envahissementLocal" id="envahissement-local" class="save" multiple>
+                    <option value="Douleur pariétale">Douleur pariétale</option>
+                    <option value="Epanchement pleural">Epanchement pleural</option>
+                    <option value="Syndrome cave supérieur">Syndrome cave supérieur </option>
+                    <option value="Dysphonie">Dysphonie</option>
+                    <option value="Hoquet">Hoquet</option>
+                    <option value="Syndrome de Pancoast-Tobias">Syndrome de Pancoast-Tobias</option>
+                    <option value="Tamponnade">Tamponnade </option>
+                  </select>
+
+
+                  <label id="temp-id" for="temps-envahissement-local">Depuis Combien de semaines ?</label>
+                  <input type="number" name="temps-envahissement-local" id="temps-envahissement-local"
+                    placeholder="semaines" min="1" max="24" value="0" disabled>
+                  <br>
+
+                  <label for="envahissement-distance">Envahissement métastatique à distance :</label>
+                  <select name="envahissementDistance" id="envahissement-distance" class="save" multiple>
+                    <option value="Symptômes cérébrales">Symptômes cérébrales</option>
+                    <option valu e="Symptômes osseuses">Symptômes osseuses</option>
+                    <option value="Symptômes hépatiques">Symptômes hépatiques </option>
+                    <option value="Symptômes surrénaliennes">Symptômes surrénaliennes</option>
+                    <option value="Symptômes ganglionnaires médiastinales">Symptômes ganglionnaires médiastinales
+                    </option>
+                    <option value="Symptômes ganglionnaires susclaviculaires">Symptômes ganglionnaires susclaviculaires
+                    </option>
+                    <option value="Tableau d'insuffisance surrénalienne aiguë">Tableau d'insuffisance surrénalienne
+                      aiguë</option>
+                    <option value="Tableau d'insuffisance surrénalienne chronique">Tableau d'insuffisance surrénalienne
+                      chronique</option>
+                    <option value="Altération de l'état général">Altération de l'état général</option>
+
+
+                  </select>
+
+                  <label id="temp-id" for="temps-envahissement-distance">Depuis Combien de semaines ?</label>
+                  <input type="number" name="temps-envahissement-distance" id="temps-envahissement-distance"
+                    placeholder="semaines" min="1" max="24" value="0" disabled>
+                  <br>
+
+                  <label for="syndromes-paraneoplasiques">Syndromes paranéoplasiques :</label>
+                  <select name="syndromesParaneoplasiques" id="syndromes-paraneoplasiques" class="save" multiple>
+                    <option value="Ostéo-arthropathie hypertrophiante pneumique de Pierre Marie">Ostéo-arthropathie
+                      hypertrophiante pneumique de Pierre Marie</option>
+                    <option value="SIADH">SIADH</option>
+                    <option value="Cushing paranéoplasique">Cushing paranéoplasique </option>
+                    <option value="Maladie thromboembolique veineuse">Maladie thromboembolique veineuse</option>
+                    <option value="Polyglobulie">Polyglobulie </option>
+                    <option value="Hypercalcémie par production de PTHrp">Hypercalcémie par production de PTHrp</option>
+                    <option value="Gynécomastie">Gynécomastie</option>
+                    <option value="Syndrome myasthéniforme de Lambert-Eaton">Syndrome myasthéniforme de Lambert-Eaton
+                    </option>
+                    <option value="Neuropathie périphérique">Neuropathie périphérique</option>
+                    <option value="Polyradiculonévrite">Polyradiculonévrite</option>
+                    <option value="Encéphalopathie paranéoplasique">Encéphalopathie paranéoplasique</option>
+                  </select>
+
+                  <label id="temp-id" for="temps-syndromes-paraneoplasiques">Depuis Combien de semaines ?</label>
+                  <input type="number" name="temps-syndromes-paraneoplasiques" id="temps-syndromes-paraneoplasiques"
+                    placeholder="semaines" min="1" max="24" value="0" disabled>
+                  <br>
+
+                  <input id="clinique-continue" type="submit" name="btn-clinique" value="Continuer" class="btn">
+                </div>
+
+                <div id="examen" class="onglet">
+                  <h2>Examens</h2>
+
+                  <label for="poid">Poids :</label>
+                  <input type="number" name="poid" class="save" id="poid" placeholder="En Kg" min="20" max="150"
+                    required>
+                  <br>
+                  <label for="poid">Taille :</label>
+                  <input type="number" name="taille" class="save" id="taille" placeholder="En cm" min="140" max="210"
+                    required>
+                  <br>
+                  <label for="oms">OMS :</label>
+                  <select name="oms" id="oms" class="save">
+                    <option value="OMS 0">OMS 0 Activité normale sans restriction</option>
+                    <option value="OMS 1">OMS 1 Restreint pour des activités physiques importantes, mais patient
+                      ambulant et capable de fournir un travail léger</option>
+                    <option value="OMS 2">OMS 2 Ambulant et capable de se prendre en charge, mais incapable de fournir
+                      un travail et alité pendant moins de 50% de son temps</option>
+                    <option value="OMS 3">OMS 3 Capacité de prise en charge propre beaucoup plus limité. Passe plus de
+                      50% de son temps au lit ou dans une chaise.</option>
+                    <option value="OMS 4">OMS 4 Complètement grabataire. Incapable de se prendre en charge. Le patient
+                      reste totalement confiné au lit ou dans une chaise</option>
+                  </select>
+
+                  <br>
+
+                  <label for="spo2">SpO<sub>2</sub> :</label>
+                  <input type="number" name="spo2" id="spo2" class="save" placeholder="" min="0" max="100" required>
+                  <br>
+
+                  <label for="examen-pulmonaire">Examen pulmonaire et régional :</label>
+                  <select name="examenPulmonaire" id="examen-pulmonaire" class="save">
+                    <option value="Syndrome cave supérieur">Syndrome cave supérieur</option>
+                    <option value="Epanchement pleural">Epanchement pleural</option>
+                  </select>
+
+                  <br>
+
+                  <label for="examen-ganglionnaire">Examen ganglionnaire :</label>
+                  <select name="examenGanglionnaire" id="examen-ganglionnaire" class="save">
+                    <option value="Adenopathie Axillaire">Adénopathie Axillaire</option>
+                    <option value="Adenopathie Susclaviculaire">Adénopathie Susclaviculaire</option>
+                  </select>
+
+                  <br>
+
+                  <label for="examen-general">Examen général :</label>
+                  <select name="examenGeneral" id="examen-general" class="save">
+                    <option value="Altération de l'état général">Altération de l'état général</option>
+                    <option value="Douleur osseuse à la palpation">Douleur osseuse à la palpation</option>
+                    <option value="Hépatomégalie, hépatalgie, ictère">Hépatomégalie, hépatalgie, ictère</option>
+                    <option value="Déficit sensitivomoteur, atteinte d'un nerf crânien, HTIC">Déficit sensitivomoteur,
+                      atteinte d'un nerf crânien, HTIC</option>
+                    <option value="Syndrome de Pancoast-Tobias">Syndrome de Pancoast-Tobias</option>
+                  </select>
+
+                  <br>
+
+
+                  <input id="examen-continue" type="submit" name="btn" value="Continuer" class="btn">
+                </div>
+
+                <div id="imagerie" class="onglet" >
+                  <h2>Radiothorax</h2>
+
+                  <label for="radiothoraxNormal"> Radiothorax Normal :</label>
+                  <input type="checkbox" id="radiothorax_normal" name="radiothoraxNormal" value="radiothorax_normal"
+                    class="save">
+
+                  <br>
+
+                  <label for="opacite">Opacité :</label>
+                  <select name="opacite" id="opacite" class="save">
+                    <option value="pulmonaire">pulmonaire</option>
+                    <option value="médiastinopulmonaire">médiastinopulmonaire</option>
+
+                  </select>
+                  <br>
+
+                  <label for="adenopathies">Adenopathies :</label>
+                  <select name="Adenopathies" id="Adenopathies" class="save">
+                    <option value="hiliaires">hiliaires</option>
+                    <option value="médiastinales">médiastinales</option>
+
+                  </select>
+                  <br>
+
+                  <label for="epanchementPleural">Epanchement pleural :</label>
+                  <select name="epanchement-pleural" id="epanchement-pleural" class="save">
+                    <option value="Oui">Oui</option>
+                    <option value="Non">Non</option>
+
+                  </select>
+                  <br>
+
+
+                  <label for="anomalieOsseuse">Anomalie osseuse :</label>
+                  <select name="anomalie-osseuse" id="anomalie-osseuse" class="save">
+                    <option value="Oui">Oui</option>
+                    <option value="Non">Non</option>
+
+                  </select>
+                  <br>
+
+
+
+
+
+                  <h2>TDM thoracique</h2>
+
+
+                  <label for="localisation">Localisation :</label>
+                  <select name="localisation" id="localisation" class="save">
+                    <option value="proximale">proximale</option>
+                    <option value="distale">distale</option>
+
+                  </select>
+                  <br>
+
+
+                  <label for="position-carene">Position par rapport à la carène :</label>
+                  <select name="positionCarene" id="position-carene" class="save">
+                    <option value=""></option>
+                    <option value=""></option>
+
+                  </select>
+                  <br>
+
+                  <label for="locale">Locale :</label>
+                  <select name="locale" id="locale" class="save">
+                    <option value="plèvre">plèvre</option>
+                    <option value="médiastin">médiastin</option>
+                    <option value="paroi thoracique">paroi thoracique</option>
+
+                  </select>
+                  <br>
+
+
+                  <label for="regionale">Régionale :</label>
+                  <select name="regionale" id="regionale" class="save">
+                    <option value="Adénopathies hiliaires ou médiastinales homolatérales">Adénopathies hiliaires ou
+                      médiastinales homolatérales</option>
+                    <option value="Adénopathies hiliaires ou médiastinales controlatérales (N3)">Adénopathies hiliaires
+                      ou médiastinales controlatérales (N3)</option>
+
+                  </select>
+                  <br>
+
+
+                  <label for="metastatique">Métastatique :</label>
+                  <select name="metastatique" id="metastatique" class="save">
+                    <option value="controlatérales">controlatérales</option>
+                    <option value="métastases osseuses">métastases osseuses</option>
+
+                  </select>
+                  <br>
+                  <input id="imagerie-continue" type="submit" name="btn-clinique" value="Continuer" class="btn">
+                </div>
+
+                <div id="diagnostic-histologique" class="onglet">
+                  <h2>Diagnostic histologique</h2>
+
+                  <label for="fibroscopie">Fibroscopie :</label>
+                  <select name="fibroscopie" id="fibroscopie" onchange="disableChoice(this,'Biopsie_a')">
+                    <option value="Oui">Oui</option>
+                    <option value="Non">Non</option>
+
+                  </select>
+
+                  <label for="Biopsie_a">Biopsie :</label>
+                  <select name="Biopsie_a" id="Biopsie_a">
+                    <option value="Oui">Oui</option>
+                    <option value="Non">Non</option>
+
+                  </select>
+                  <br>
+
+                  <label for="Biopsie sur scann">Biopsie sur scann :</label>
+                  <select name="bscan" id="bscan">
+                    <option value="Oui">Oui</option>
+                    <option value="Non">Non</option>
+
+                  </select>
+                  <br>
+
+
+                  <label for="mediastinoscopie">Médiastinoscopie :</label>
+                  <select name="meddiastinoscopie" id="mediastinoscopie" onchange="disableChoice(this,'Biopsie_b')">
+                    <option value="Oui">Oui</option>
+                    <option value="Non">Non</option>
+                  </select>
+
+                  <label for="Biopsie_b">Biopsie :</label>
+                  <select name="Biopsie_b" id="Biopsie_b">
+                    <option value="Oui">Oui</option>
+                    <option value="Non">Non</option>
+
+                  </select>
+                  <br>
+
+                  <label for="thoracotomie">Thoracotomie :</label>
+                  <select name="thoracotomie" id="thoracotomie" onchange="disableChoice(this, 'Biopsie_c')">
+                    <option value="Oui">Oui</option>
+                    <option value="Non">Non</option>
+
+                  </select>
+
+                  <label for="Biopsie_c">Biopsie :</label>
+                  <select name="Biopsie_c" id="Biopsie_c">
+                    <option value="Oui">Oui</option>
+                    <option value="Non">Non</option>
+                  </select>
+                  <br>
+
+                  <label for="thoracoscopie">Thoracoscopie :</label>
+                  <select name="thoracoscopie" id="thoracoscopie" onchange="disableChoice(this,'Biopsie_d')">
+                    <option value="Oui">Oui</option>
+                    <option value="Non">Non</option>
+                  </select>
+
+                  <label for="Biopsie_d">Biopsie :</label>
+                  <select name="Biopsie_d" id="Biopsie_d">
+                    <option value="Oui">Oui</option>
+                    <option value="Non">Non</option>
+                  </select>
+                  <br>
+
+                  <label for="echoendoscopie">echoendoscopie :</label>
+                  <select name="echoendoscopie" id="echoendoscopie" onchange="disableChoice(this, 'Biopsie_e')">
+                    <option value="Oui">Oui</option>
+                    <option value="Non">Non</option>
+
+                  </select>
+
+
+                  <label for="Biopsie_e">Biopsie :</label>
+                  <select name="Biopsie_e" id="Biopsie_e">
+                    <option value="Oui">Oui</option>
+                    <option value="Non">Non</option>
+
+                  </select>
+                  <br>
+
+                  <input id="diag-continue" type="submit" name="btn-clinique" value="Continuer" class="btn">
+                </div>
+
+                <div id="ctnm" class="onglet">
+                  <h2>cTNM</h2>
+                  <label id="t-label">T :</label>
+                  <select id="t">
+                    <option value="T1">Tumeur entourée de poumon ou de plèvre viscérale, sans preuve bronchoscopique
+                      d'invasion plus proximale que la bronche lobaire</option>
+                    <option value="T2"> Tumeur implique la bronche principale quelle que soit la distance à la carène,
+                      mais sans implication de la carène</option>
+                    <option value="T2"> Tumeur envahit la plèvre viscérale </option>
+                    <option value="T2"> Tumeur associé à une atélectasie ou à une pneumonie obstructive qui s'étend à la
+                      région hilaire impliquant une partie ou la totalité du poumon </option>
+                    <option value="T3"> Tumeur qui envahit directement la plèvre pariétale </option>
+                    <option value="T3"> Tumeur qui envahit directement la paroi thoracique (y compris les tumeurs du
+                      sillon supérieur) </option>
+                    <option value="T3"> Tumeur qui envahit directement le nerf phrénique </option>
+                    <option value="T3"> Tumeur qui envahit directement le péricarde pariétal </option>
+                    <option value="T3"> Nodule(s) tumoral(s) séparé(s) dans le même lobe que le primitif </option>
+                    <option value="T4"> Tumeur qui envahit le diaphragme </option>
+                    <option value="T4"> Tumeur qui envahit le médiastin </option>
+                    <option value="T4"> Tumeur qui envahit le cœur </option>
+                    <option value="T4"> Tumeur qui envahit les gros vaisseaux </option>
+                    <option value="T4"> Tumeur qui envahit le trachée </option>
+                    <option value="T4"> Tumeur qui envahit le nerf laryngé récurrent </option>
+                    <option value="T4"> Tumeur qui envahit l'œsophage </option>
+                    <option value="T4"> Tumeur qui envahit le corps vertébral </option>
+                    <option value="T4"> Tumeur qui envahit la carène </option>
+                    <option value="T4"> Nodule(s) tumoral(s) séparé(s) dans un lobe ipsilatéral différent de celui du
+                      primaire </option>
+                  </select>
+                  <br>
+                  <br>
+                  <label id="taille-t-label"> Taille Tumeur:</label>
+                  <input id="taille-tumeur" type="number" max="100" min="11" placeholder="mm" required>
+                  <br>
+                  <br>
+                  <label id="n-label">N :</label>
+                  <select id="n">
+                    <option value="N0"> Pas de métastases ganglionnaires régionales </option>
+                    <option value="N1"> Métastases dans les ganglions lymphatiques péribronchiques et/ou hilaires
+                      homolatéraux et les ganglions intrapulmonaires, y compris l'atteinte par extension directe
+                    </option>
+                    <option value="N2"> Métastases dans les ganglions lymphatiques médiastinaux et/ou sous-carinaux
+                      ipsilatéraux </option>
+                    <option value="N3"> Métastases dans le médiastin controlatéral, hilaire controlatéral, scalène
+                      ipsilatéral ou controlatéral ou ganglion(s) lymphatique(s) supraclaviculaire(s) </option>
+                  </select>
+                  <br>
+                  <br>
+
+                  <label id="m-id">M: </label>
+                  <select id="m">
+                    <option value="M0"> Pas de métastase à distance </option>
+                    <option value="M1a"> Nodule(s) tumoral(s) séparé(s) dans un lobe controlatéral ; tumeur avec nodules
+                      pleuraux ou péricardiques ou épanchement pleural ou péricardique malin </option>
+                    <option value="M1b"> Métastase extrathoracique unique dans un seul organe </option>
+                    <option value="M1c"> Métastases extrathoraciques multiples dans un ou plusieurs organes </option>
+                  </select>
+                  <br>
+                  <br>
+
+                  <input id="ctnm-continue" type="submit" name="btn-ctnm" value="Continuer" class="btn">
+
+
+                </div>
+
+                <div id="anatomo" class="onglet">
+                  <h2> Anatomopathologie </h2>
+                  <label id="hist-label"> Histologie: </label>
+                  <select id="hist" onchange="histComb(this);">
+                    <option value="cpc"> CPC </option>
+                    <option value="cncp"> CNCP </option>
+                  </select>
+                  <br>
+                  <br>
+                  <label id="hist-type-label"> Type d'Histologie: </label>
+                  <select id="hist-type" disabled onchange="histComb_(this);">
+                    <option value="Adénocarcinome"> Adénocarcinome </option>
+                    <option value="Epidermoïde"> Epidermoïde </option>
+                  </select>
+                  <br>
+                  <br>
+                  <div id="frame-hist">
+                    <label> Mutation activatrice du gène EGFR: </label>
+                    <select id="egfr">
+                      <option value="oui"> Oui </option>
+                      <option value="non"> Non </option>
+                    </select>
+                    <br>
+                    <br>
+                    <label> Réarrangement du gène de fusion ALK: </label>
+                    <select id="rea">
+                      <option id="Non"> Non </option>
+                      <option id="Oui"> Oui </option>
+                    </select>
+                    <br>
+                    <br>
+                    <label> Réarrangement RoS1: </label>
+                    <select id="ros1">
+                      <option id="Non"> Non </option>
+                      <option id="Oui"> Oui </option>
+                    </select>
+                    <br>
+                    <br>
+                    <label> Statut de mutation BRAF: </label>
+                    <select id="braf">
+                      <option id="Non"> Non </option>
+                      <option id="Oui"> Oui </option>
+                    </select>
+                    <br>
+                    <br>
+                    <div id="nrtk-div">
+                      <label> Réarrangement NTRK: </label>
+                      <select id="ntrk">
+                        <option id="Non"> Non </option>
+                        <option id="Oui"> Oui </option>
+                      </select>
+                      <br>
+                      <br>
+                    </div>
+                    <label> PDL1: </label>
+                    <select id="pdl1">
+                      <option id="Non"> Négatif </option>
+                      <option id="Oui"> Positif <=50% </option>
+                      <option id="Oui"> Positif >50% </option>
+                    </select>
+                    <br>
+                    <br>
+                  </div>
+
+                  <br>
+                  <br>
+                  <input id="anato-continue" type="submit" name="btn-anato" value="Continuer" class="btn">
+                </div>
+
+                <div id="bilan-extension" class="onglet">
+                  <h2> Bilan d'extension </h2>
+                  <label> PET Scan: </label>
+                  <select id="pet-scan">
+                    <option value="M0"> Pas de foyers d'hyperfixation </option>
+                    <option value="M1"> Foyers d'hyperfixation </option>
+                    <option value="M1"> Métastase osseuse </option>
+                  </select>
+                  <br>
+                  <br>
+                  <label> TDM abdominale: </label>
+                  <select id="tdm-abdo">
+                    <option value="M0"> Pas de métastases </option>
+                    <option value="M1"> Métastase hépatique </option>
+                    <option value="M1"> Métastase surrénalienne </option>
+                  </select>
+                  <br>
+                  <br>
+                  <label> TDM cérébrale: </label>
+                  <select id="tdm-cere">
+                    <option value="M0"> Pas de métastases </option>
+                    <option value="M1"> Métastase cérébrale </option>
+                  </select>
+                  <br>
+                  <br>
+                  <label> Scintigraphie: </label>
+                  <select id="scin">
+                    <option value="M0"> Pas de métastases </option>
+                    <option value="M1"> Métastase osseuse </option>
+                  </select>
+                  <br>
+                  <br>
+                  <label> IRM cérébrale: </label>
+                  <select id="irm-cere">
+                    <option id="M0"> Pas de métastases </option>
+                    <option id="M1"> Métastase cérébrale </option>
+                  </select>
+                  <br>
+                  <br>
+                  <label> IRM rachidienne: </label>
+                  <select id="irm-rachid">
+                    <option id="0"> Compression médullaire </option>
+                    <option id="1"> Pas de compression médullaire </option>
+                  </select>
+                  <br>
+                  <br>
+
+                  <input id="bilan-ext-continue" type="submit" name="btn-bilan" value="Continuer" class="btn">
+
+                </div>
+
+                <div id="bilan-pre" class="onglet">
+                  <nav>
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="row">
+                          <button class="btn btn-light col-sm-3" onclick="openOnglet(event, 'eval-resp', 'onglet-eval');">Evaluation de fonction respiratoire</button>
+                          <button class="btn btn-light col-md-3" onclick="openOnglet(event, 'eval-cardio', 'onglet-eval');"> Evaluation cardiovasculaire </button>
+                          <button class="btn btn-light col-md-3" onclick="openOnglet(event, 'etat-gen', 'onglet-eval');"> Etat général </button>
+                          <button class="btn btn-light col-md-3" onclick="openOnglet(event, 'audiometrie', 'onglet-eval');"> Audiométrie </button>
+                        </div>
+                      </div>
+                    </div>
+                  </nav>
+
+                  <div class="row onglet-eval" id="eval-resp" >
+                    <div class="col-md-4">
+                      <br>
+                      <h5> Gaz du sang artériel </h5>
+                      <label> pH: </label>
+                      <input type="number" min="0" max="14" placeholder="pH" class="save">
+                      <br>
+                      <label> PaCO<sub>2</sub>: </label>
+                      <input type="number" placeholder="mmHg" class="save">
+                      <br>
+                      <label> PaO<sub>2</sub>: </label>
+                      <input type="number" placeholder="mmHg" class="save">
+                      <br>
+                      <label> HCO<sub>3</sub><sup>-</sup> : </label>
+                      <input type="number" placeholder="mmol/L" class="save">
+                    </div>
+                    <div class="col-md-4">
+                      <h5> EFR avec spirométrie </h5>
+                      <label> Volume Courant (VC): </label>
+                      <input type="number" placeholder="ml/Kg" class="save">
+                      <br>
+                      <label> Volume de réserve inspiratoire (VRI): </label>
+                      <input type="number" placeholder="ml/Kg" class="save">
+                      <br>
+                      <label> Volumre de réserve expiratoire (VRE): </label>
+                      <input type="number" placeholder="ml/Kg" class="save">
+                      <br>
+                      <label> Volume Résiduel (VR): </label>
+                      <input type="number" placeholder="ml/Kg" class="save">
+                      <br>
+                      <label> Volume Expiratoire Maximal Seconde (VEMS): </label>
+                      <input type="number" placeholder="ml/Kg" class="save">
+                    </div>
+                    <div class="col-md-4">
+                      <br>
+                      <label> Mesure de la DLCO: </label>
+                      <input type="number" placeholder="mL/min/mmHg" class="save">
+                      <br>
+                      <label> VO<sub>2</sub> max (épreuve d'effort): </label>
+                      <input type="number" placeholder="ml/min/Kg" class="save">
+                      <br>
+                      <label> Scintigraphie de ventilation: </label>
+                      <select id="select-sci" class="save">
+                        <option value="Embolie pulmonaire"> Embolie pulmonaire </option>
+                        <option value="Pas d'embolie pulmonaire"> Pas d'embolie pulmonaire </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row onglet-eval" id="eval-cardio" >
+                    <div class="col-sm-8">
+                      <br>
+                      <label> ECG:</label>
+                      <select>
+                        <option value="Arythmie"> Arythmie </option>
+                        <option value="Crise cardiaque"> Crise cardiaque </option>
+                        <option value="Blocage des artères coronaires"> Blocage des artères coronaires </option>
+                        <option value="Dilatation du volume du coeur"> Dilatation du volume du coeur </option>
+                        <option value="Péricardite"> Péricardite </option>
+                        <option value="Pas d'anomalies cardiaques"> Pas d'anomalies cardiaques </option>
+                      </select>
+                    </div>
+                    <div class="col-sm-8">
+                      <br>
+                      <label> ETT: </label>
+                      <select>
+                        <option value="Insuffisance cardiaque">Insuffisance cardiaque</option>
+                        <option value="Malformation cardiaque"> Malformation cardiaque</option>
+                        <option value="Valvulopathie"> Valvulopathie</option>
+                        <option value="Epanchement péricardique"> Epanchement péricardique</option>
+                        <option value="Pas d'anomalies cardiaques"> Pas d'anomalies cardiaques </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row onglet-eval" id="etat-gen" >
+                    <div class="col-sm-8">
+                      <br>
+                      <label>PS: </label>
+                      <select>
+                        <option value="OMS0"> OMS 0 Activité normale sans restriction</option>
+                        <option value="OMS1"> OMS 1 Restreint pour des activités physiques importantes, mais patient ambulant et capable de fournir un travail léger</option>
+                        <option value="OMS2"> OMS 2 Ambulant et capable de se prendre en charge, mais incapable de fournir un travail et alité pendant moins de 50% de son temps</option>
+                        <option value="OMS3"> OMS 3 Capacité de prise en charge propre beaucoup plus limité. Passe plus de 50% de son temps au lit ou dans une chaise.</option>
+                        <option value="OMS4"> OMS 4 Complètement grabataire. Incapable de se prendre en charge. Le patient reste totalement confiné au lit ou dans une chaise.</option>
+                      </select>
+                      <br>
+                      <label> Etat nutritionnel: </label>
+                      <select>
+                        <option value="Régime alimentaire équilibré"> Régime alimentaire équilibré</option>
+                        <option value="Dénutrition"> Dénutrition</option>
+                      </select>
+                      <br>
+                      <label> Albuminémie: </label>
+                      <input type="number" placeholder="g/dl">
+                      <br>
+                      <label> Fonction rénale: </label>
+                      <select>
+                        <option value="Fonction rénale normale"> Fonction rénale normale</option>
+                        <option value="Insuffisance rénale"> Insuffisance rénale</option>
+                      </select>
+                      <br>
+                      <label>Clairance de la créatinine: </label>
+                      <input type="number" placeholder="ml/min">
+                      <br>
+                      <label>Fonction hépatique: </label>
+                      <select>
+                        <option value="Fonction hépatique normale"> Fonction hépatique normale </option>
+                        <option value="Insuffisance hépatique"> Insuffisance hépatique </option>
+                      </select>
+                    </div>
+
+                  </div>
+                  <div class="row onglet-eval" id="audiometrie" >
+                    <div class="col-sm-8">
+                      <br>
+                      <label> Audiométrie: </label>
+                      <select>
+                        <option value="Fonction auditive normale">Fonction auditive normale</option>
+                        <option value="Surdité légère">Surdité légère</option>
+                        <option value="Surdité modérée">Surdité modérée</option>
+                        <option value="Surdité sévère">Surdité sévère</option>
+                        <option value="Surdité profonde">Surdité profonde</option>
+                        <option value="Surdité totale">Surdité totale</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                
+
+                <div id="traitement" class="onglet">
+                </div>
+
+                <div id="protocole" class="onglet">
+                </div>
+
+                <div id="ordonnance" class="onglet">
+                </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Display section -->
+        <div class="col-sm-4 lecture_section">
+          <div class="row">
+
+            <div id="age-display" hidden>
+              <label>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                  class="bi bi-person-fill" viewBox="0 0 16 16">
+                  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                </svg>
+                Age:
+              </label>
+              <span id="age-span"></span>
+            </div>
+
+            <div id="sexe-display" hidden>
+              <label>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                  class="bi bi-person-fill" viewBox="0 0 16 16">
+                  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                </svg>
+                Sexe:
+              </label>
+              <span id="sexe-span"></span>
+            </div>
+
+            <div id="tabagisme-display" hidden>
+              <label>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                  class="bi bi-person-fill" viewBox="0 0 16 16">
+                  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                </svg>
+                Tabagisme:
+              </label>
+              <span id="tabagisme-span"></span>
+            </div>
+
+            <div id="pa-display" hidden>
+              <label>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                  class="bi bi-person-fill" viewBox="0 0 16 16">
+                  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                </svg>
+                PA:
+              </label>
+              <span id="pa-span"></span>
+            </div>
+
+            <div id="atcd-med-display" hidden>
+              <label>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                  class="bi bi-person-fill" viewBox="0 0 16 16">
+                  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                </svg>
+                ATCD MED:
+              </label>
+              <span id="atcd-med-span"></span>
+            </div>
+
+            <div id="atcd-chir-display" hidden>
+              <label>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                  class="bi bi-person-fill" viewBox="0 0 16 16">
+                  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                </svg>
+                ATCD CHIR:
+              </label>
+              <span id="atcd-chir-span"></span>
+            </div>
+
+            <div id="atcd-thor-display" hidden>
+              <label>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                  class="bi bi-person-fill" viewBox="0 0 16 16">
+                  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                </svg>
+                ATCD THORAX:
+              </label>
+              <span id="atcd-thor-span"></span>
+            </div>
+
+            <div id="atcd-fam-display" hidden>
+              <label>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                  class="bi bi-person-fill" viewBox="0 0 16 16">
+                  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                </svg>
+                ATCD FAM:
+              </label>
+              <span id="atcd-fam-span"></span>
+            </div>
+
+            <div id="poid-display" hidden>
+              <label>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                  class="bi bi-person-fill" viewBox="0 0 16 16">
+                  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                </svg>
+                Poids:
+              </label>
+              <span id="poid-span"></span>
+            </div>
+
+            <div id="taille-display" hidden>
+              <label>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                  class="bi bi-person-fill" viewBox="0 0 16 16">
+                  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                </svg>
+                Taille:
+              </label>
+              <span id="taille-span"></span>
+            </div>
+
+            <div id="oms-display" hidden>
+              <label>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                  class="bi bi-person-fill" viewBox="0 0 16 16">
+                  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                </svg>
+                OMS:
+              </label>
+              <span id="oms-span"></span>
+            </div>
+
+            <div id="spo2-display" hidden>
+              <label>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                  class="bi bi-person-fill" viewBox="0 0 16 16">
+                  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                </svg>
+                SPO<sub>2</sub>:
+              </label>
+              <span id="spo2-span"></span>
+            </div>
+
+            <div id="ctnm-display" hidden>
+              <label class="calculated">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                  class="bi bi-person-fill" viewBox="0 0 16 16">
+                  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                </svg>
+                cTNM:
+              </label>
+              <span id="ctnm-span"></span>
+            </div>
+
+            <div id="tnm-display" hidden>
+              <label class="calculated">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                  class="bi bi-person-fill" viewBox="0 0 16 16">
+                  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                </svg>
+                TNM:
+              </label>
+              <span id="tnm-span"></span>
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+
+
+        </form>
+
+</body>
+
+</html>
