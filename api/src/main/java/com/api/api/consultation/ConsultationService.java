@@ -71,6 +71,10 @@ public class ConsultationService {
         return TNM;
     }
 
+    public void getConsultationByLastDate(Consultation consultation) {
+        
+    }
+
     public void saveConsultation(Consultation consultation) {
         consultationRepository.save(consultation);
     }

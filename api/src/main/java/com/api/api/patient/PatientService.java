@@ -36,14 +36,14 @@ public class PatientService {
         }
     }
 
-    public Optional<Patient> getPatientByNomAndPrenom(String nom, String prenom) throws PatientExcecption{
-        Optional<Patient> patientOptional = patientRepository.findPatientByNomAndPrenom(nom, prenom);
+     public List<Patient> getPatientByNomAndPrenom(String nom, String prenom) throws PatientExcecption{
+        List<Patient> patientOptional = patientRepository.findPatientByNomAndPrenom(nom, prenom);
         if (patientOptional.isEmpty()) {
             throw new PatientExcecption("Patient does not exists!");
         } else {
             return patientOptional;
         }
-    }
+    } 
 
     public Optional<Patient> getPatient(Long id) {
         return patientRepository.findById(id);

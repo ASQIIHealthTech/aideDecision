@@ -1,9 +1,9 @@
 package com.api.api.patient;
 
-import java.util.ArrayList;
 import com.api.api.consultation.*;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
 
 import java.util.List;
 
@@ -39,21 +40,23 @@ public class Patient {
     @Column(name = "cancerType")
     private String cancerType;
 
-    @OneToMany
-    private List<Consultation> consultations = new ArrayList<>();
+    @OneToMany(targetEntity = Consultation.class, mappedBy = "patient")
+    @Embedded
+    private List<Consultation> consultations;
 
     public Patient() {
 
     }
 
     public Patient(String nom, String prenom, String dmi, String dateNaissance, String sexe,
-            String cancerType) {
+            String cancerType, List<Consultation> consultations) {
         this.nom = nom;
         this.prenom = prenom;
         this.dmi = dmi;
         this.dateNaissance = dateNaissance;
         this.sexe = sexe;
         this.cancerType = cancerType;
+        this.consultations = consultations;
     }
 
     public String getNom() {

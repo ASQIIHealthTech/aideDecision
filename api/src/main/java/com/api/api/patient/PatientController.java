@@ -48,16 +48,16 @@ public class PatientController {
         }
     }
 
-    @GetMapping(value = "/get/fullname")
+     @GetMapping(value = "/get/fullname")
     public ResponseEntity<String> getPatientByNomAndPrenom(@RequestBody Map<String, String> payload) {
         try {
-            Optional<Patient> patient = patientService.getPatientByNomAndPrenom(payload.get("nom"), payload.get("prenom"));
+            List<Patient> patient = patientService.getPatientByNomAndPrenom(payload.get("nom"), payload.get("prenom"));
             String patientResponse = new Gson().toJson(patient.toString());
             return ResponseEntity.ok().body(patientResponse);
         } catch (PatientExcecption e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
-    }
+    } 
 
     @PostMapping(value = "/new")
     public ResponseEntity<String> addNewPatient(@RequestBody String payload) {

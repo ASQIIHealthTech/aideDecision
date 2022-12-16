@@ -5,10 +5,13 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -16,8 +19,12 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 
+import com.api.api.patient.Patient;
+
+
 @Entity
 @Table
+@Embeddable
 public class Consultation {
     @Id
     @SequenceGenerator(
@@ -27,7 +34,7 @@ public class Consultation {
     )
     @GeneratedValue(
         strategy = GenerationType.SEQUENCE,
-        generator = "student_sequence"
+        generator = "consultation_sequence"
     )
     private Long id;
 
@@ -39,6 +46,8 @@ public class Consultation {
     private void onCreate() {
         date = new Date();
     }
+    @ManyToOne
+    private Patient patient;
 
 
     // Habitude
@@ -90,7 +99,7 @@ public class Consultation {
 
     }
 
-    public Consultation(String tabagismeActif, int paquetAnnee, String tabagismePassif, String sevrage, String tabouna,
+    public Consultation(Patient patient, String tabagismeActif, int paquetAnnee, String tabagismePassif, String sevrage, String tabouna,
             String exposition, List<String> atcdMedicaux, String atcdChirurgicaux, String radioTherapieThoracique,
             String atcdFamiliaux, List<String> symptomeRespiratoire, List<String> envahissementLocalRegional,
             List<String> envahissementStringDistance, List<String> syndromeParaneoplasique, int poids, int taille,
@@ -149,6 +158,13 @@ public class Consultation {
         this.date = date;
     }
 
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
 
     public String getTabagismeActif() {
         return tabagismeActif;
@@ -393,6 +409,14 @@ public class Consultation {
         this.tabagismePassif = tabagismePassif;
     }
 
+    public String getAdenopathies() {
+        return adenopathies;
+    }
+
+    public void setAdenopathies(String adenopathies) {
+        this.adenopathies = adenopathies;
+    }
+
     @Override
     public String toString() {
         return "Consultation [ tabagismeActif=" + tabagismeActif + ", paquetAnnee="
@@ -409,5 +433,6 @@ public class Consultation {
                 + ", radioThoraxNormale=" + radioThoraxNormale + ", localisation=" + localisation + ", locale=" + locale
                 + ", regionale=" + regionale + ", metastatique=" + metastatique + "]";
     }
+
  
 }
