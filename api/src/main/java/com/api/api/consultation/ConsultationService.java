@@ -32,7 +32,12 @@ public class ConsultationService {
 
     }
     
-
+    
+    /**
+     * Method that transform a taille value to a predifined class
+     * @param taille the value to determine the class
+     * @return Class of the past variable
+     */
     private String tailleClasse(String taille) {
         
         int tailleConverted = Integer.parseInt(taille);
@@ -61,7 +66,13 @@ public class ConsultationService {
             return "T4";
         }
     }
-
+    
+    /**
+     * Method that determine the T value in the CTNM
+     * @param TDesscription value passed from the payload
+     * @param taille value passed from the payload
+     * @return T value
+     */
     public String TValue(String TDesscription, String taille) {
 
         String T = tailleClasse(taille);
@@ -73,6 +84,12 @@ public class ConsultationService {
         }
     }
 
+    /**
+     * Method that determine the M value in the TNM
+     * @param values values passed from the front
+     * @param ctnm previous CTNM value
+     * @return The corresponding M value
+     */
     public String MValue(Collection<String> values, String ctnm) {
 
         String M = "";
@@ -88,7 +105,11 @@ public class ConsultationService {
         return TNM;
     }
 
-    // TODO: check the cv = 0 case
+    /**
+     * Method that determine the values of the "Bilan-preoperatoire"
+     * @param payload containing the values to determine the output
+     * @return Map containg the output values
+     */
     public Map<String, String> EFR(Map<String, String> payload) {
 
         Map<String, String> result = new HashMap<String, String>();
@@ -103,6 +124,13 @@ public class ConsultationService {
 
     }
 
+    /**
+     * Method that determine the Stade variable
+     * @param histo
+     * @param M
+     * @param TNM
+     * @return Stade 
+     */
     public String Stade(String histo, String M, String TNM) {
         String result = null;
         System.out.println(histo);

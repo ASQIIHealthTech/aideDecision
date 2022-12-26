@@ -34,6 +34,11 @@ public class ConsultationController {
         
     }
 
+    /**
+     * Routing for the CTNM intermediate result
+     * @param payload containing the variable to determine the CTNM
+     * @return ResponseBody with 200 status and CTNM value
+     */
     @PostMapping(path = "/ctnm", produces = "application/json; charset=UTF-8")
     public ResponseEntity<String> getCTNM(@RequestBody Map<String, String> payload) {
 
@@ -55,6 +60,11 @@ public class ConsultationController {
         return ResponseEntity.ok().body(item.toString());
     }
     // TODO: check the M subscripts
+    /**
+     * Routing to get the TNM intermediate result
+     * @param payload containing the variables to determine CTNM
+     * @return ResponseBody with 200 status and TNM value
+     */
     @PostMapping(path = "/tnm", produces = "application/json; charset=UTF-8")
     public ResponseEntity<String> getTNM(@RequestBody Map<String, String> payload) {
 
@@ -74,6 +84,13 @@ public class ConsultationController {
         return ResponseEntity.ok().body(item.toString());
     }
     
+    /**
+     * Routing to save the consultation 
+     * @param payload containing all the values defined in the front
+     * @return ResponseBody with 200 status and log message 
+     * @throws JsonSyntaxException If consultation paylaod coudn't be desirealised
+     * @throws IllegalArgumentException If the save function fails
+     */
     @PostMapping(path = "/save", produces = "application/json; charset=UTF-8")
     public ResponseEntity<String> saveConsultation(@RequestBody String payload) {
 
@@ -89,7 +106,11 @@ public class ConsultationController {
         }
          
     }
-
+    /**
+     * Routing to determine values of "Bilan-preoperatoire"
+     * @param payload containing the values needed to determine the output
+     * @return ResponseBody with 200 status and the values as a json body
+     */
     @PostMapping(path = "/efr", produces = "application/json; charset=UTF-8")
     public ResponseEntity<String> bilanEFR(@RequestBody Map<String, String> payload) {
 
