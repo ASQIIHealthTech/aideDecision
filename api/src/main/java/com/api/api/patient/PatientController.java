@@ -29,11 +29,19 @@ public class PatientController {
         this.patientService = patientService;
     }
 
+    /***
+     * The routing to get all the patients in the database
+     * @return List of all the Patients
+     */
     @GetMapping(value = "/get")
     public List<Patient> getPatients() {
         return patientService.getPatients();
     }
-
+    /**
+     * Filter routing to get the patient by dmi
+     * @param payload containing the dmi of the patient
+     * @return ResponseEntity with 200 status and patient object 
+     */
     @GetMapping(value = "/get/dmi")
     public ResponseEntity<String> getPatientByDMI(@RequestBody Map<String, String> payload) {
         try {
@@ -47,8 +55,12 @@ public class PatientController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
-
-     @GetMapping(value = "/get/fullname")
+    /**
+     * Filter routing to get the patient by FistName and LastName
+     * @param payload containing the first and last name of the patient
+     * @return ResponseEntity with 200 status and patient object
+     */
+    @GetMapping(value = "/get/fullname")
     public ResponseEntity<String> getPatientByNomAndPrenom(@RequestBody Map<String, String> payload) {
         try {
             List<Patient> patient = patientService.getPatientByNomAndPrenom(payload.get("nom"), payload.get("prenom"));
@@ -58,7 +70,11 @@ public class PatientController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     } 
-
+    /**
+     * The rounting to add a new patient to the database
+     * @param payload containing attributes forming the patient object
+     * @return ResponseEntity with 200 status and log message
+     */
     @PostMapping(value = "/new")
     public ResponseEntity<String> addNewPatient(@RequestBody String payload) {
         try {
@@ -74,6 +90,11 @@ public class PatientController {
     }
 
     // helper function
+    /**
+     * A helper function that desirealise the payload and convert it to a class object
+     * @param payload Json payload containing the attributes forming the patient object
+     * @return Patient object
+     */
     private <T> Patient desirealisePayload(String payload) {
 
         Gson gson = new Gson();
