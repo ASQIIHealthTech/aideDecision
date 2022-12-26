@@ -814,9 +814,8 @@
                     </div>
                   </nav>
 
-                  <div class="row onglet-eval" id="eval-resp" >
-                    <div class="col-md-4">
-                      <br>
+                  <div class="row onget-eval" id="eval-resp" >
+                    <div class="col-sm-4">
                       <h5> Gaz du sang artériel </h5>
                       <label> pH: </label>
                       <input type="number" min="0" max="14" placeholder="pH" class="save">
@@ -830,22 +829,22 @@
                       <label> HCO<sub>3</sub><sup>-</sup> : </label>
                       <input type="number" placeholder="mmol/L" class="save">
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-sm-4">
                       <h5> EFR avec spirométrie </h5>
                       <label> Volume Courant (VC): </label>
-                      <input type="number" placeholder="ml/Kg" class="save">
+                      <input type="number" id="vc" placeholder="ml/Kg" class="save">
                       <br>
                       <label> Volume de réserve inspiratoire (VRI): </label>
-                      <input type="number" placeholder="ml/Kg" class="save">
+                      <input type="number" id="vri" placeholder="ml/Kg" class="save">
                       <br>
                       <label> Volumre de réserve expiratoire (VRE): </label>
-                      <input type="number" placeholder="ml/Kg" class="save">
+                      <input type="number" id="vre" placeholder="ml/Kg" class="save">
                       <br>
                       <label> Volume Résiduel (VR): </label>
-                      <input type="number" placeholder="ml/Kg" class="save">
+                      <input type="number" id="vr" placeholder="ml/Kg" class="save">
                       <br>
                       <label> Volume Expiratoire Maximal Seconde (VEMS): </label>
-                      <input type="number" placeholder="ml/Kg" class="save">
+                      <input type="number" id="vems" placeholder="ml/Kg" class="save">
                     </div>
                     <div class="col-md-4">
                       <br>
@@ -939,6 +938,8 @@
                       </select>
                     </div>
                   </div>
+
+                  <input id="bilan-pre-continue" type="submit" name="btn-bilan-pre" value="Continuer" class="btn">
                 </div>
                 
 
@@ -1113,6 +1114,17 @@
                 TNM:
               </label>
               <span id="tnm-span"></span>
+            </div>
+
+            <div id="stade-display" hidden>
+              <label class="calculated">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                  class="bi bi-person-fill" viewBox="0 0 16 16">
+                  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                </svg>
+                Stade:
+              </label>
+              <span id="stade-span"></span>
             </div>
 
           </div>

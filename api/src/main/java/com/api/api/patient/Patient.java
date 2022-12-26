@@ -59,6 +59,16 @@ public class Patient {
         this.consultations = consultations;
     }
 
+    public void addConsultation(Consultation consultation) {
+        consultations.add(consultation);
+        consultation.setPatient(this);
+    }
+
+    public void removeConsultation(Consultation consultation) {
+        consultations.remove(consultation);
+        consultation.setPatient(null);
+    }
+
     public String getNom() {
         return nom;
     }

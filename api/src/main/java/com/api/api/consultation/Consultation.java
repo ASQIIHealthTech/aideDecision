@@ -7,11 +7,11 @@ import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -46,7 +46,7 @@ public class Consultation {
     private void onCreate() {
         date = new Date();
     }
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Patient patient;
 
 
@@ -415,6 +415,13 @@ public class Consultation {
 
     public void setAdenopathies(String adenopathies) {
         this.adenopathies = adenopathies;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Consultation)) return false;
+        return id != null && id.equals(((Consultation) o).getId()); 
     }
 
     @Override

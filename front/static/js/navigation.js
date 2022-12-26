@@ -2,7 +2,7 @@ import { getSelected } from './scripts.js';
 
 var ctnmUrl = "http://localhost:8080/api/consultation/ctnm";
 var tnmUrl = "http://localhost:8080/api/consultation/tnm";
-
+var efrUrl = "https://localhost:8080/api/consultation/efr";
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -11,10 +11,12 @@ document.addEventListener("DOMContentLoaded", function () {
     var antcd_button = document.getElementById("atcd-continue");
     var clinique_button = document.getElementById("clinique-continue");
     var examen_button = document.getElementById("examen-continue");
+    var imag_button = document.getElementById("imagerie-continue");
+    var diag_button = document.getElementById("diag-continue");
     var ctnm_button = document.getElementById("ctnm-continue");
     var anatomo_button = document.getElementById("anato-continue");
     var bilan_ex = document.getElementById("bilan-ext-continue");
-
+    var bilan_pre = document.getElementById("bilan-pre-continue");
 
     if (profil_button) {
         profil_button.addEventListener('click', navigation_profil);
@@ -46,6 +48,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if(bilan_ex) {
         bilan_ex.addEventListener('click', navigate_bilan);
+    }
+
+    if (bilan_pre) {
+        bilan_pre.addEventListener('click', );
     }
 
     function navigation_profil() {
@@ -167,6 +173,14 @@ document.addEventListener("DOMContentLoaded", function () {
         
     };
 
+    function navigate_imagerie() {
+        document.getElementById("diag-h").click();
+    }
+
+    function navigate_diag() {
+        document.getElementById("ctnm-h").click();
+    }
+
     function navigate_ctnm() {
         var t = document.getElementById("t").value;
         var n = document.getElementById("n").value;
@@ -194,16 +208,15 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log(body["ctnm"]);
             display.removeAttribute("hidden");
             span.innerHTML = body["ctnm"];
-            
-        }
-        )
-         
+        })
 
         document.getElementById("antomo-h").click();
 
     }
     function navigate_anatomo() {
 
+        localStorage.clear();
+        localStorage.setItem("hist", document.getElementById("hist").value);
         document.getElementById("bilan-h").click();
     }
 
@@ -221,11 +234,12 @@ document.addEventListener("DOMContentLoaded", function () {
             "tdmcere": tdmcere,
             "scin": scin,
             "irmcere": irmcere,
-            "irmrachid": irmrachid
+            "irmrachid": irmrachid,
+            "hist": `${localStorage.getItem("hist")}`
         }
 
         fetch(tnmUrl, {
-            method: "post",
+            method: "POST",
             headers: {
                 "Content-type": "application/json"
             },
@@ -233,12 +247,39 @@ document.addEventListener("DOMContentLoaded", function () {
         }).then(res => res.json())
         .then(body => {
             console.log(body['tnm']);
+            console.log(body['stade']);
             document.getElementById("tnm-display").removeAttribute("hidden");
-            document.getElementById("tnm-span").innerHTML = body['tnm'];
+            document.getElementById("tnm-span").innerHTML += body['tnm'];
+            document.getElementById("stade-display").removeAttribute("hidden");
+            document.getElementById("stade-span").innerHTML += body['stade'];
+        }).catch(error => {
+            console.log(error);
         })
 
         document.getElementById("bilan-pre-h").click();
     
+    }
+
+    function navigate_bilan_pre() {
+        
+        let data = {
+            "vc": `${document.getElementById("vc").value}`,
+            "vri": `${document.getElementById("vri").value}`,
+            "vre": `${document.getElementById("vre").value}`,
+            "vr": `${document.getElementById("vr").value}`,
+            "vems": `${document.getElementById("vems").value}`
+        }
+
+        fetch(efrUrl, {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(data)
+        }).then(res => res.json())
+        .then(body => {
+            console.log(body);
+        })
     }
 
 });
