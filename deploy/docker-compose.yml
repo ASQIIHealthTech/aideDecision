@@ -6,8 +6,8 @@ services:
   # front container
   front-app:
     container_name: mcda-front
-    image: mcda-front:1.0
-    build: ../front/
+    image: front-mcda:latest
+    build: ../front/    
     env_file:
       - .env
     ports:
@@ -31,7 +31,7 @@ services:
   springboot-app:
     restart: always
     container_name: mcda-api
-    image: mcda-api:1.0
+    image: mcda-api:latest
     build: ../api/
     env_file:
       - .env
