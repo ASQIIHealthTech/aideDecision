@@ -2,7 +2,8 @@ import { getSelected } from './scripts.js';
 
 var ctnmUrl = "http://localhost:8080/api/consultation/ctnm";
 var tnmUrl = "http://localhost:8080/api/consultation/tnm";
-var efrUrl = "https://localhost:8080/api/consultation/efr";
+var treatmentUrl = "https://localhost:8080/api/treatment/chimio";
+var pecUrl = "https://localhost:8080/api/consultation/pec";
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -51,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (bilan_pre) {
-        bilan_pre.addEventListener('click', );
+        bilan_pre.addEventListener('click', navigate_bilan_pre);
     }
 
     function navigation_profil() {
@@ -261,16 +262,18 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function navigate_bilan_pre() {
+
+        var histo = document.getElementById("hist");
+        var paco2 = document.getElementById("paco2");
+        var ps = document.getElementById("ps");
         
         let data = {
-            "vc": `${document.getElementById("vc").value}`,
-            "vri": `${document.getElementById("vri").value}`,
-            "vre": `${document.getElementById("vre").value}`,
-            "vr": `${document.getElementById("vr").value}`,
-            "vems": `${document.getElementById("vems").value}`
+            "histo": `${histo.value}`,
+            "paco2":  `${paco2.value}`,
+            "ps": `${ps.value}`
         }
 
-        fetch(efrUrl, {
+        fetch(pecUrl, {
             method: "POST",
             headers: {
                 "Content-type": "application/json"
@@ -281,6 +284,7 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log(body);
         })
     }
+
 
 });
 

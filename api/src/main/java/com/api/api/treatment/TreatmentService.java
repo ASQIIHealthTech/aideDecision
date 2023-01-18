@@ -13,6 +13,7 @@ public class TreatmentService {
     @Autowired
     private final TreatmentRepository treatmentRepository;
 
+
     public TreatmentService(TreatmentRepository treatmentRepository) {
         this.treatmentRepository = treatmentRepository;
     }
@@ -20,11 +21,10 @@ public class TreatmentService {
     public List<Object[]> getChimioTreatment(Map<String, String> payload) throws TreatmentException {
         
         for (String key : payload.keySet()) {
-            if (payload.get(key) == "") {
-                payload.replace(key, null);
+            if (payload.get(key) == "" || payload.get(key) == null) {
+                payload.replace(key, "N/A");
             }
         }
-        System.out.println(payload);
 
         List<Object[]> Protocoles = treatmentRepository.findProtocole(
             payload.get("histo"),
@@ -43,10 +43,28 @@ public class TreatmentService {
             payload.get("tabac")
         );
         if (Protocoles.isEmpty()) {
-            System.out.println(Protocoles);
             throw new TreatmentException("No Protocole is found");
         } else {
             return Protocoles;
         }
     }
+
+    public List<Object[]> getPEC(Map<String, String> payload) throws TreatmentException{
+        for (String key : payload.keySet()) {
+            if (payload.get(key) == "" || payload.get(key) == null) {
+                payload.replace(key, "N/A");
+            }
+        }
+        System.out.println(payload);
+
+        List<Object[]> pec = treatmentRepository.findPEC(payload.get("histo"), 
+                                        payload.get("paco2"),
+                                        payload.get("ps"));
+        if (pec.isEmpty()) {
+            throw new TreatmentException("No Prise en Charge found!");
+        } else {
+            return pec;
+        }
+    }
+
 }

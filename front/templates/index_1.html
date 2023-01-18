@@ -206,7 +206,7 @@
                 <div id="habitudes" class="onglet">
                   <h2>Habitudes</h2>
                   <label for="tabac-actif">Tabagisme actif :</label>
-                  <select name="tabagismeActif" id="tabac-actif" class="save">
+                  <select name="tabagismeActif" id="tabac-actif" class="save-chimio">
                     <option value="Oui">Oui</option>
                     <option value="Non">Non</option>
                   </select>
@@ -683,9 +683,9 @@
                 <div id="anatomo" class="onglet">
                   <h2> Anatomopathologie </h2>
                   <label id="hist-label"> Histologie: </label>
-                  <select id="hist" onchange="histComb(this);">
+                  <select id="hist" class="chimio" onchange="histComb(this);">
                     <option value="cpc"> CPC </option>
-                    <option value="cncp"> CNCP </option>
+                    <option value="cnpc"> CNPC </option>
                   </select>
                   <br>
                   <br>
@@ -698,21 +698,21 @@
                   <br>
                   <div id="frame-hist">
                     <label> Mutation activatrice du gène EGFR: </label>
-                    <select id="egfr">
+                    <select id="egfr" class="chimio">
                       <option value="oui"> Oui </option>
                       <option value="non"> Non </option>
                     </select>
                     <br>
                     <br>
                     <label> Réarrangement du gène de fusion ALK: </label>
-                    <select id="rea">
+                    <select id="alk" name="alk" class="chimio">
                       <option id="Non"> Non </option>
                       <option id="Oui"> Oui </option>
                     </select>
                     <br>
                     <br>
                     <label> Réarrangement RoS1: </label>
-                    <select id="ros1">
+                    <select id="ros1" name="ros1" class="chimio">
                       <option id="Non"> Non </option>
                       <option id="Oui"> Oui </option>
                     </select>
@@ -735,7 +735,7 @@
                       <br>
                     </div>
                     <label> PDL1: </label>
-                    <select id="pdl1">
+                    <select id="pdl1" name="pdl1" class="chimio">
                       <option id="Non"> Négatif </option>
                       <option id="Oui"> Positif <=50% </option>
                       <option id="Oui"> Positif >50% </option>
@@ -821,7 +821,7 @@
                       <input type="number" min="0" max="14" placeholder="pH" class="save">
                       <br>
                       <label> PaCO<sub>2</sub>: </label>
-                      <input type="number" placeholder="mmHg" class="save">
+                      <input class="chimio" type="number" placeholder="mmHg" class="save">
                       <br>
                       <label> PaO<sub>2</sub>: </label>
                       <input type="number" placeholder="mmHg" class="save">
@@ -844,7 +844,7 @@
                       <input type="number" id="vr" placeholder="ml/Kg" class="save">
                       <br>
                       <label> Volume Expiratoire Maximal Seconde (VEMS): </label>
-                      <input type="number" id="vems" placeholder="ml/Kg" class="save">
+                      <input type="number" id="vems" class="chimio" placeholder="ml/Kg" class="save">
                     </div>
                     <div class="col-md-4">
                       <br>
@@ -890,7 +890,7 @@
                     <div class="col-sm-8">
                       <br>
                       <label>PS: </label>
-                      <select>
+                      <select name="ps" class="chimio">
                         <option value="OMS0"> OMS 0 Activité normale sans restriction</option>
                         <option value="OMS1"> OMS 1 Restreint pour des activités physiques importantes, mais patient ambulant et capable de fournir un travail léger</option>
                         <option value="OMS2"> OMS 2 Ambulant et capable de se prendre en charge, mais incapable de fournir un travail et alité pendant moins de 50% de son temps</option>
@@ -914,7 +914,7 @@
                       </select>
                       <br>
                       <label>Clairance de la créatinine: </label>
-                      <input type="number" placeholder="ml/min">
+                      <input type="number" class="chimio" placeholder="ml/min">
                       <br>
                       <label>Fonction hépatique: </label>
                       <select>
@@ -928,7 +928,7 @@
                     <div class="col-sm-8">
                       <br>
                       <label> Audiométrie: </label>
-                      <select>
+                      <select class="chimio">
                         <option value="Fonction auditive normale">Fonction auditive normale</option>
                         <option value="Surdité légère">Surdité légère</option>
                         <option value="Surdité modérée">Surdité modérée</option>

@@ -1,5 +1,4 @@
-deploy/.env
-api/target
 .vscode
 .fake
-chimiotherap.sql
+db/
+.m2

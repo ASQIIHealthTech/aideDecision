@@ -2,6 +2,7 @@ package com.api.api.consultation;
 
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 import org.json.JSONObject;
@@ -24,6 +25,7 @@ import com.google.gson.JsonSyntaxException;
 public class ConsultationController {
     
     private String ctnm;
+    private String stade;
 
     @Autowired
     private final ConsultationService consultationService;
@@ -59,7 +61,7 @@ public class ConsultationController {
 
         return ResponseEntity.ok().body(item.toString());
     }
-    // TODO: check the M subscripts
+    
     /**
      * Routing to get the TNM intermediate result
      * @param payload containing the variables to determine CTNM
@@ -69,19 +71,35 @@ public class ConsultationController {
     public ResponseEntity<String> getTNM(@RequestBody Map<String, String> payload) {
 
         // stream json values to array
-        System.out.println(payload);
         Collection<String> values = payload.values();
-        System.out.println(payload.get("hist"));
         String TNM = consultationService.MValue(values, this.ctnm); 
-        String stade = consultationService.Stade(payload.get("hist"), TNM.substring(TNM.indexOf("M"), TNM.length() - 1), TNM);
+        String stade = consultationService.Stade(payload.get("hist"), TNM.substring(TNM.indexOf("M"), TNM.length()), TNM);
     
         JSONObject item = new JSONObject();
 
         item.put("tnm", TNM);
         item.put("stade", stade);
+        this.stade = stade;
 
         
         return ResponseEntity.ok().body(item.toString());
+    }
+
+    @PostMapping(path = "/pec", produces = "application/json; charset=UTF-8")
+    public ResponseEntity<String> getPEC(@RequestBody Map<String, String> payload) {
+        try {
+            List<String> pec = consultationService.getPEC(payload.get("histo"), this.stade, payload.get("vems"), payload.get("paco2"), payload.get("ps"));
+
+            JSONObject item = new JSONObject();
+
+            for (int i=0; i<pec.size(); i++) {
+                item.put("pec"+i, pec.get(i));
+            }
+
+            return ResponseEntity.ok().body(item.toString());
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Coudn't fetch the PEC!!");
+        }
     }
     
     /**
