@@ -38,6 +38,7 @@ function date_cure(date, jourProd) {
 function createPecSelect(options) {
 
   var select = document.createElement("select");
+  select.id = "pec-select"
   for (var i=0; i <Object.keys(options).length; i++) {
     var option = document.createElement("option")
     option.value = "pec"+i

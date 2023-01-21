@@ -3,6 +3,7 @@ import { getSelected, createPecSelect } from './scripts.js';
 var ctnmUrl = "http://localhost:8080/api/consultation/ctnm";
 var tnmUrl = "http://localhost:8080/api/consultation/tnm";
 var pecUrl = "http://localhost:8080/api/consultation/pec";
+var traitementUrl = "http://localhost:8080/api/treatment/chimio";
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -17,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var anatomo_button = document.getElementById("anato-continue");
     var bilan_ex = document.getElementById("bilan-ext-continue");
     var bilan_pre = document.getElementById("bilan-pre-continue");
+    var traitement_button = document.getElementById("traitement-continue");
 
     if (profil_button) {
         profil_button.addEventListener('click', navigation_profil);
@@ -36,6 +38,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (examen_button) {
         examen_button.addEventListener('click', navigation_examen);
+    }
+
+    if (imag_button) {
+        imag_button.addEventListener('click', navigate_imagerie)
+    }
+
+    if (diag_button) {
+        diag_button.addEventListener('click', navigate_diag)
     }
 
     if (ctnm_button) {
@@ -204,7 +214,6 @@ document.addEventListener("DOMContentLoaded", function () {
         .then((body) => {
             let display = document.getElementById("ctnm-display");
             let span = document.getElementById("ctnm-span");
-            console.log(display);
             console.log(body["ctnm"]);
             display.removeAttribute("hidden");
             span.innerHTML = body["ctnm"];
@@ -292,7 +301,6 @@ document.addEventListener("DOMContentLoaded", function () {
             "vems": `${vems}`,
             "ps": `${ps}`
         }
-        console.log(data)
         fetch(pecUrl, {
             method: "POST",
             headers: {
@@ -321,16 +329,75 @@ document.addEventListener("DOMContentLoaded", function () {
             button.type = "submit"
             button.value = "Continuer"
             button.id = "traitement-continue"
+            button.addEventListener('click', navigate_traitement)
             document.getElementById("traitement").appendChild(button)
 
             document.getElementById("traitement-h").click()
-
         }).catch(error => {
             var label = document.createElement("label")
             label.innerHTML = error.message
         })
     }
 
+    function navigate_traitement() {
+        
+        var pec = document.getElementById("pec-select")
+        var traitement = pec.options[pec.selectedIndex].innerHTML
+        console.log(traitement)
+        if(traitement == "Chimiothérapie") {
+            var histo = document.getElementById("hist").value
+            var stade = document.getElementById("stade-span").innerHTML
+            var vems = document.getElementById("vems").value
+            var paco2 = document.getElementById("paco2").value
+            var type_histo = document.getElementById("hist-type").value
+            var clairance = document.getElementById("clairance").value
+            var audiometrie = document.getElementById("audiometrie").value
+            var egfr = document.getElementById("egfr").value
+            var alk = document.getElementById("alk").value
+            var braf = document.getElementById("braf").value
+            var ros1 = document.getElementById("ros1").value
+            var pdl1 = document.getElementById("pdl1").value
+            var ps = document.getElementById("ps").value
+
+            let data = {
+                "histo": `${histo}`,
+                "stade": `${stade}`,
+                "vems": `${vems}`,
+                "paco2": `${paco2}`,
+                "type_histo": `${type_histo}`,
+                "clairance": `${clairance}`,
+                "audiometrie": `${audiometrie}`,
+                "egfr": `${egfr}`,
+                "alk": `${alk}`,
+                "braf": `${braf}`,
+                "ros1": `${ros1}`,
+                "pdl1": `${pdl1}`,
+                "ps": `${ps}`,
+                "tabac": "N/A"
+            }
+            console.log(data)
+
+            fetch(traitementUrl, {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json"
+                },
+                body: JSON.stringify(data)
+            }).then(res => res.json())
+            .then(body => {
+                console.log(body)
+            }).catch(error => {
+                console.log(error)
+            })
+
+        } else {
+            var container = document.getElementById("protocole")
+            var htmlBlock = document.createElement("div")
+            htmlBlock.innerHTML = "<p>Could not generate Protocole suggetion</p>"
+            container.appendChild(htmlBlock)
+        }
+        document.getElementById("protocole-h").click()
+    }
 
 });
 

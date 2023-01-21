@@ -323,7 +323,7 @@
                   <label for="envahissement-distance">Envahissement métastatique à distance :</label>
                   <select name="envahissementDistance" id="envahissement-distance" class="save" multiple>
                     <option value="Symptômes cérébrales">Symptômes cérébrales</option>
-                    <option valu e="Symptômes osseuses">Symptômes osseuses</option>
+                    <option value="Symptômes osseuses">Symptômes osseuses</option>
                     <option value="Symptômes hépatiques">Symptômes hépatiques </option>
                     <option value="Symptômes surrénaliennes">Symptômes surrénaliennes</option>
                     <option value="Symptômes ganglionnaires médiastinales">Symptômes ganglionnaires médiastinales
@@ -691,7 +691,7 @@
                   <br>
                   <label id="hist-type-label"> Type d'Histologie: </label>
                   <select id="hist-type" disabled onchange="histComb_(this);">
-                    <option value="Adénocarcinome"> Adénocarcinome </option>
+                    <option value="Non Epidermoïde"> Adénocarcinome </option>
                     <option value="Epidermoïde"> Epidermoïde </option>
                   </select>
                   <br>
@@ -915,7 +915,7 @@
                       </select>
                       <br>
                       <label>Clairance de la créatinine: </label>
-                      <input type="number" class="chimio" placeholder="ml/min">
+                      <input id="clairance" type="number" class="chimio" placeholder="ml/min">
                       <br>
                       <label>Fonction hépatique: </label>
                       <select>
@@ -925,11 +925,11 @@
                     </div>
 
                   </div>
-                  <div class="row onglet-eval" id="audiometrie" >
+                  <div class="row onglet-eval">
                     <div class="col-sm-8">
                       <br>
                       <label> Audiométrie: </label>
-                      <select class="chimio">
+                      <select class="chimio" id="audiometrie">
                         <option value="Fonction auditive normale">Fonction auditive normale</option>
                         <option value="Surdité légère">Surdité légère</option>
                         <option value="Surdité modérée">Surdité modérée</option>
