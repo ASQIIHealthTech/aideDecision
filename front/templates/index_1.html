@@ -821,7 +821,7 @@
                       <input type="number" min="0" max="14" placeholder="pH" class="save">
                       <br>
                       <label> PaCO<sub>2</sub>: </label>
-                      <input class="chimio" type="number" placeholder="mmHg" class="save">
+                      <input id="paco2" class="chimio" type="number" placeholder="mmHg" class="save">
                       <br>
                       <label> PaO<sub>2</sub>: </label>
                       <input type="number" placeholder="mmHg" class="save">
@@ -890,12 +890,13 @@
                     <div class="col-sm-8">
                       <br>
                       <label>PS: </label>
-                      <select name="ps" class="chimio">
-                        <option value="OMS0"> OMS 0 Activité normale sans restriction</option>
-                        <option value="OMS1"> OMS 1 Restreint pour des activités physiques importantes, mais patient ambulant et capable de fournir un travail léger</option>
-                        <option value="OMS2"> OMS 2 Ambulant et capable de se prendre en charge, mais incapable de fournir un travail et alité pendant moins de 50% de son temps</option>
-                        <option value="OMS3"> OMS 3 Capacité de prise en charge propre beaucoup plus limité. Passe plus de 50% de son temps au lit ou dans une chaise.</option>
-                        <option value="OMS4"> OMS 4 Complètement grabataire. Incapable de se prendre en charge. Le patient reste totalement confiné au lit ou dans une chaise.</option>
+                      <select id="ps" name="ps" class="chimio">
+                        <option value=""></option>
+                        <option value="0"> OMS 0 Activité normale sans restriction</option>
+                        <option value="1"> OMS 1 Restreint pour des activités physiques importantes, mais patient ambulant et capable de fournir un travail léger</option>
+                        <option value="2"> OMS 2 Ambulant et capable de se prendre en charge, mais incapable de fournir un travail et alité pendant moins de 50% de son temps</option>
+                        <option value="3"> OMS 3 Capacité de prise en charge propre beaucoup plus limité. Passe plus de 50% de son temps au lit ou dans une chaise.</option>
+                        <option value="4"> OMS 4 Complètement grabataire. Incapable de se prendre en charge. Le patient reste totalement confiné au lit ou dans une chaise.</option>
                       </select>
                       <br>
                       <label> Etat nutritionnel: </label>

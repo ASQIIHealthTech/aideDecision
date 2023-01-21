@@ -1,9 +1,8 @@
-import { getSelected } from './scripts.js';
+import { getSelected, createPecSelect } from './scripts.js';
 
 var ctnmUrl = "http://localhost:8080/api/consultation/ctnm";
 var tnmUrl = "http://localhost:8080/api/consultation/tnm";
-var treatmentUrl = "https://localhost:8080/api/treatment/chimio";
-var pecUrl = "https://localhost:8080/api/consultation/pec";
+var pecUrl = "http://localhost:8080/api/consultation/pec";
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -209,6 +208,8 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log(body["ctnm"]);
             display.removeAttribute("hidden");
             span.innerHTML = body["ctnm"];
+        }).catch(error => {
+            console.log(error)
         })
 
         document.getElementById("antomo-h").click();
@@ -263,16 +264,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function navigate_bilan_pre() {
 
-        var histo = document.getElementById("hist");
-        var paco2 = document.getElementById("paco2");
-        var ps = document.getElementById("ps");
+        var histo = document.getElementById("hist").value;
+        var paco2 = document.getElementById("paco2").value;
+        if (paco2 == 0) {
+            paco2 = "N/A"
+        } else if (paco2 > 45) {
+            paco2 = "SUP45"
+        } else {
+            paco2 = "INF45"
+        }
+        var ps = document.getElementById("ps").value;
+        if (ps == "") {
+            ps = "N/A"
+        }
+        var vems = document.getElementById("vems").value;
+        if (vems == 0) {
+            vems = "N/A"
+        } else if (vems <= 1) {
+            vems = "INF1"
+        } else {
+            vems = "SUP1"
+        }
         
         let data = {
-            "histo": `${histo.value}`,
-            "paco2":  `${paco2.value}`,
-            "ps": `${ps.value}`
+            "histo": `${histo}`,
+            "paco2":  `${paco2}`,
+            "vems": `${vems}`,
+            "ps": `${ps}`
         }
-
+        console.log(data)
         fetch(pecUrl, {
             method: "POST",
             headers: {
@@ -281,7 +301,33 @@ document.addEventListener("DOMContentLoaded", function () {
             body: JSON.stringify(data)
         }).then(res => res.json())
         .then(body => {
-            console.log(body);
+            
+             // create the label
+            var label = document.createElement("label")
+            label.innerHTML = "Prise en charge:&nbsp;&nbsp"
+            document.getElementById("traitement").appendChild(label)
+
+            // dynamically create a select and input tag holding the pec values
+            var select = createPecSelect(body)
+            var breakLine = document.createElement("br")
+
+            document.getElementById("traitement").appendChild(select)
+            
+            // break line
+            document.getElementById("traitement").appendChild(breakLine)
+
+            var button = document.createElement("input")
+            button.classList.add("btn")
+            button.type = "submit"
+            button.value = "Continuer"
+            button.id = "traitement-continue"
+            document.getElementById("traitement").appendChild(button)
+
+            document.getElementById("traitement-h").click()
+
+        }).catch(error => {
+            var label = document.createElement("label")
+            label.innerHTML = error.message
         })
     }
 

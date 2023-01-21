@@ -35,4 +35,17 @@ function date_cure(date, jourProd) {
   document.getElementById("date-apres-prod").innerHTML = output_date.toDateString();
 }
 
-export { getSelected, disbaleEnableInput }
+function createPecSelect(options) {
+
+  var select = document.createElement("select");
+  for (var i=0; i <Object.keys(options).length; i++) {
+    var option = document.createElement("option")
+    option.value = "pec"+i
+    option.text = options[option.value]
+    select.appendChild(option)
+  }
+
+  return select
+}
+
+export { getSelected, disbaleEnableInput, createPecSelect }

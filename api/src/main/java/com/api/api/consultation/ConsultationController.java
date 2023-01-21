@@ -89,13 +89,11 @@ public class ConsultationController {
     public ResponseEntity<String> getPEC(@RequestBody Map<String, String> payload) {
         try {
             List<String> pec = consultationService.getPEC(payload.get("histo"), this.stade, payload.get("vems"), payload.get("paco2"), payload.get("ps"));
-
             JSONObject item = new JSONObject();
-
+            
             for (int i=0; i<pec.size(); i++) {
                 item.put("pec"+i, pec.get(i));
             }
-
             return ResponseEntity.ok().body(item.toString());
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Coudn't fetch the PEC!!");
