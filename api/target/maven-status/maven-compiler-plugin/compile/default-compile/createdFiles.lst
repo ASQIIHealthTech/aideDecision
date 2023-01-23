@@ -1,0 +1,15 @@
+com\api\api\consultation\ConsultationService.class
+com\api\api\consultation\ConsultationController.class
+com\api\api\treatment\TreatmentRepository.class
+com\api\api\ApiApplication.class
+com\api\api\treatment\TreatmentController.class
+com\api\api\treatment\Treatment.class
+com\api\api\treatment\TreatmentService.class
+com\api\api\patient\PatientExcecption.class
+com\api\api\patient\Patient.class
+com\api\api\patient\PatientRepository.class
+com\api\api\patient\PatientService.class
+com\api\api\consultation\ConsultationRepository.class
+com\api\api\patient\PatientController.class
+com\api\api\consultation\Consultation.class
+com\api\api\treatment\TreatmentException.class
