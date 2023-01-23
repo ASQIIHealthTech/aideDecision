@@ -1,4 +1,4 @@
-import { getSelected, createPecSelect } from './scripts.js';
+import { getSelected, createPecSelect, createProtocoleSelect } from './scripts.js';
 
 var ctnmUrl = "http://localhost:8080/api/consultation/ctnm";
 var tnmUrl = "http://localhost:8080/api/consultation/tnm";
@@ -248,6 +248,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "irmrachid": irmrachid,
             "hist": `${localStorage.getItem("hist")}`
         }
+        console.log(data)
 
         fetch(tnmUrl, {
             method: "POST",
@@ -348,9 +349,33 @@ document.addEventListener("DOMContentLoaded", function () {
             var histo = document.getElementById("hist").value
             var stade = document.getElementById("stade-span").innerHTML
             var vems = document.getElementById("vems").value
+            if (vems == 0) {
+                vems = "N/A"
+            } else if (vems <= 1) {
+                vems = "INF1"
+            } else {
+                vems = "SUP1"
+            }
             var paco2 = document.getElementById("paco2").value
+            if (paco2 == 0) {
+                paco2 = "N/A"
+            } else if (paco2 > 45) {
+                paco2 = "SUP45"
+            } else {
+                paco2 = "INF45"
+            }
             var type_histo = document.getElementById("hist-type").value
             var clairance = document.getElementById("clairance").value
+            if (clairance >= 60) {
+                clairance = "SUP60"
+            } else if (clairance < 60 && clairance >= 30) {
+                clairance = "INF60"
+            } else if (clairance < 30 && clairance > 0){
+                clairance = "INF30"
+            } else {
+                clairance = "N/A"
+            }
+            
             var audiometrie = document.getElementById("audiometrie").value
             var egfr = document.getElementById("egfr").value
             var alk = document.getElementById("alk").value
@@ -358,6 +383,9 @@ document.addEventListener("DOMContentLoaded", function () {
             var ros1 = document.getElementById("ros1").value
             var pdl1 = document.getElementById("pdl1").value
             var ps = document.getElementById("ps").value
+            if (ps == "") {
+                ps = "N/A"
+            }
 
             let data = {
                 "histo": `${histo}`,
@@ -385,7 +413,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 body: JSON.stringify(data)
             }).then(res => res.json())
             .then(body => {
-                console.log(body)
+                console.log(body['protocole'])
+                createProtocoleSelect(body['protocole'])
+
             }).catch(error => {
                 console.log(error)
             })

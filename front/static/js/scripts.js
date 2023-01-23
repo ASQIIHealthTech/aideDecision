@@ -49,4 +49,15 @@ function createPecSelect(options) {
   return select
 }
 
-export { getSelected, disbaleEnableInput, createPecSelect }
+function createProtocoleSelect(options) {
+
+  for(var i=0; i<options.length; i++) {
+    var span = document.createElement("span");
+    span.innerHTML = options[i]
+    var breakLine = document.createElement("br")
+    document.getElementById("protocole").appendChild(span)
+    document.getElementById("protocole").appendChild(breakLine)
+  }
+}
+
+export { getSelected, disbaleEnableInput, createPecSelect, createProtocoleSelect }

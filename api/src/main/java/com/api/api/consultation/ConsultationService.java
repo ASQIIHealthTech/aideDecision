@@ -17,39 +17,39 @@ public class ConsultationService {
     // TODO: check the table of pec
     private String[][] pec = {
         {"histo/stade/vems/paco2/ps", "PEC1", "PEC2"},
-                {"cnpc/Stade IA/INF1/SUP45/N/A", "Radiothérapie", "Chimiothérapie"},
-                {"cnpc/Stade IA1/INF1/SUP45/N/A", "Radiothérapie", "Chimiothérapie"},
-                {"cnpc/Stade IA2/INF1/SUP45/N/A", "Radiothérapie", "Chimiothérapie"},
-                {"cnpc/Stade IA3/INF1/SUP45/N/A", "Radiothérapie", "Chimiothérapie"},
-                {"cnpc/Stade IB/INF1/SUP45/N/A", "Radiothérapie", "Chimiothérapie"},
-                {"cnpc/Stade IIA/INF1/SUP45/N/A", "Radiothérapie", "Chimiothérapie"},
-                {"cnpc/Stade IIB/INF1/SUP45/N/A", "Radiothérapie", "Chimiothérapie"},
-                {"cnpc/Stade IA/INF1/INF45/N/A", "Radiothérapie", "Chimiothérapie"},
-                {"cnpc/Stade IA1/INF1/INF45/N/A", "Radiothérapie", "Chimiothérapie"},
-                {"cnpc/Stade IA2/INF1/INF45/N/A", "Radiothérapie", "Chimiothérapie"},
-                {"cnpc/Stade IA3/INF1/INF45/N/A", "Radiothérapie", "Chimiothérapie"},
-                {"cnpc/Stade IB/INF1/INF45/N/A", "Radiothérapie", "Chimiothérapie"},
-                {"cnpc/Stade IIA/INF1/INF45/N/A", "Radiothérapie", "Chimiothérapie"},
-                {"cnpc/Stade IIB/INF1/INF45/N/A", "Radiothérapie", "Chimiothérapie"},
-                {"cnpc/Stade IA/SUP1/SUP45/N/A", "Radiothérapie", "Chimiothérapie"},
-                {"cnpc/Stade IA1/SUP1/SUP45/N/A", "Radiothérapie", "Chimiothérapie"},
-                {"cnpc/Stade IA2/SUP1/SUP45/N/A", "Radiothérapie", "Chimiothérapie"},
-                {"cnpc/Stade IA3/SUP1/SUP45/N/A", "Radiothérapie", "Chimiothérapie"},
-                {"cnpc/Stade IB/SUP1/SUP45/N/A", "Radiothérapie", "Chimiothérapie"},
-                {"cnpc/Stade IIA/SUP1/SUP45/N/A", "Radiothérapie", "Chimiothérapie"},
-                {"cnpc/Stade IIB/SUP1/SUP45/N/A", "Radiothérapie", "Chimiothérapie"},
-                {"cnpc/Stade IA/SUP1/INF45/N/A", "Chirurgie", "N/A"},
-                {"cnpc/Stade IA1/SUP1/INF45/N/A", "Chirurgie", "N/A"},
-                {"cnpc/Stade IA2/SUP1/INF45/N/A", "Chirurgie", "N/A"},
-                {"cnpc/Stade IA3/SUP1/INF45/N/A", "Chirurgie", "N/A"},
-                {"cnpc/Stade IB/SUP1/INF45/N/A", "Chirurgie", "N/A"},
-                {"cnpc/Stade IIA/SUP1/INF45/N/A", "Chirurgie", "Chimiothérapie"},
-                {"cnpc/Stade IIB/SUP1/INF45/N/A", "Chirurgie", "Chimiothérapie"},
-                {"cnpc/Stade IIIA/N/A/N/A/N/A", "Chirurgie", "Chimiothérapie"},
-                {"cnpc/Stade IIIB/N/A/N/A/N/A", "Radiothérapie", "Chimiothérapie"},
-                {"cnpc/Stade IIIC/N/A/N/A/N/A", "Radiothérapie", "Chimiothérapie"},
-                {"cnpc/Stade IVA/N/A/N/A/N/A", "Chimiothérapie / Thérapie ciblée", "N/A"},
-                {"cnpc/Stade IVB/N/A/N/A/N/A", "Chimiothérapie / Thérapie ciblée", "N/A"},
+                {"CNPC/Stade IA/INF1/SUP45/N/A", "Radiothérapie", "Chimiothérapie"},
+                {"CNPC/Stade IA1/INF1/SUP45/N/A", "Radiothérapie", "Chimiothérapie"},
+                {"CNPC/Stade IA2/INF1/SUP45/N/A", "Radiothérapie", "Chimiothérapie"},
+                {"CNPC/Stade IA3/INF1/SUP45/N/A", "Radiothérapie", "Chimiothérapie"},
+                {"CNPC/Stade IB/INF1/SUP45/N/A", "Radiothérapie", "Chimiothérapie"},
+                {"CNPC/Stade IIA/INF1/SUP45/N/A", "Radiothérapie", "Chimiothérapie"},
+                {"CNPC/Stade IIB/INF1/SUP45/N/A", "Radiothérapie", "Chimiothérapie"},
+                {"CNPC/Stade IA/INF1/INF45/N/A", "Radiothérapie", "Chimiothérapie"},
+                {"CNPC/Stade IA1/INF1/INF45/N/A", "Radiothérapie", "Chimiothérapie"},
+                {"CNPC/Stade IA2/INF1/INF45/N/A", "Radiothérapie", "Chimiothérapie"},
+                {"CNPC/Stade IA3/INF1/INF45/N/A", "Radiothérapie", "Chimiothérapie"},
+                {"CNPC/Stade IB/INF1/INF45/N/A", "Radiothérapie", "Chimiothérapie"},
+                {"CNPC/Stade IIA/INF1/INF45/N/A", "Radiothérapie", "Chimiothérapie"},
+                {"CNPC/Stade IIB/INF1/INF45/N/A", "Radiothérapie", "Chimiothérapie"},
+                {"CNPC/Stade IA/SUP1/SUP45/N/A", "Radiothérapie", "Chimiothérapie"},
+                {"CNPC/Stade IA1/SUP1/SUP45/N/A", "Radiothérapie", "Chimiothérapie"},
+                {"CNPC/Stade IA2/SUP1/SUP45/N/A", "Radiothérapie", "Chimiothérapie"},
+                {"CNPC/Stade IA3/SUP1/SUP45/N/A", "Radiothérapie", "Chimiothérapie"},
+                {"CNPC/Stade IB/SUP1/SUP45/N/A", "Radiothérapie", "Chimiothérapie"},
+                {"CNPC/Stade IIA/SUP1/SUP45/N/A", "Radiothérapie", "Chimiothérapie"},
+                {"CNPC/Stade IIB/SUP1/SUP45/N/A", "Radiothérapie", "Chimiothérapie"},
+                {"CNPC/Stade IA/SUP1/INF45/N/A", "Chirurgie", "N/A"},
+                {"CNPC/Stade IA1/SUP1/INF45/N/A", "Chirurgie", "N/A"},
+                {"CNPC/Stade IA2/SUP1/INF45/N/A", "Chirurgie", "N/A"},
+                {"CNPC/Stade IA3/SUP1/INF45/N/A", "Chirurgie", "N/A"},
+                {"CNPC/Stade IB/SUP1/INF45/N/A", "Chirurgie", "N/A"},
+                {"CNPC/Stade IIA/SUP1/INF45/N/A", "Chirurgie", "Chimiothérapie"},
+                {"CNPC/Stade IIB/SUP1/INF45/N/A", "Chirurgie", "Chimiothérapie"},
+                {"CNPC/Stade IIIA/N/A/N/A/N/A", "Chirurgie", "Chimiothérapie"},
+                {"CNPC/Stade IIIB/N/A/N/A/N/A", "Radiothérapie", "Chimiothérapie"},
+                {"CNPC/Stade IIIC/N/A/N/A/N/A", "Radiothérapie", "Chimiothérapie"},
+                {"CNPC/Stade IVA/N/A/N/A/N/A", "Chimiothérapie / Thérapie ciblée", "N/A"},
+                {"CNPC/Stade IVB/N/A/N/A/N/A", "Chimiothérapie / Thérapie ciblée", "N/A"},
                 {"cpc/localise/N/A/N/A/0", "Chimiothérapie", "Radiothérapie séquentiellle"},
                 {"cpc/localise/N/A/N/A/1", "Chimiothérapie", "Radiothérapie séquentielle"},
                 {"cpc/localise/N/A/N/A/2", "Chimiothérapie", "Radiothérapie concomittante"},
@@ -173,11 +173,11 @@ public class ConsultationService {
      */
     public String Stade(String histo, String M, String TNM) {
         String result = "";
-        if (histo.equals("cnpc")) {
+        if (histo.equals("CNPC")) {
             result = this.stade.entrySet().stream().filter(e -> e.getValue().contains(TNM)).map(Map.Entry::getKey).findFirst().get();
         
         } 
-        if (histo.equals("cpc")) {
+        if (histo.equals("CPC")) {
             if (M.equals("M0")) {  
                 result = "localise";
             }

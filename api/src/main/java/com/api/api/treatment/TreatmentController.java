@@ -39,15 +39,4 @@ public class TreatmentController {
         }
     }
 
-    @PostMapping(value = "/pec")
-    public ResponseEntity<String> getPEC(@RequestBody Map<String, String> payload) {
-        try {
-            List<Object[]> pec = treatmentService.getPEC(payload);
-            JSONObject response = new JSONObject();
-            response.put("pec", pec.toArray());
-            return ResponseEntity.ok().body(response.toString());
-        } catch (TreatmentException e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage()); 
-        }
-    }
 }

@@ -49,43 +49,44 @@
   <script type="text/javascript">
     function histComb(element) {
       if (element.value == "cpc") {
-        if (parseInt(localStorage.getItem("paquet-annee")) < 15) {
-          document.getElementById("pdl1").disabled = true;
-          document.getElementById("egfr").disabled = true;
-          document.getElementById("rea").disabled = false;
+        document.getElementById("hist-type").disabled = true
+        if (localStorage.getItem("tabac-actif") == "Non" ||  parseInt(localStorage.getItem("paquet-annee")) < 15) {
+          document.getElementById("pdl1").disabled = false;
+          document.getElementById("egfr").disabled = false;
+          document.getElementById("alk").disabled = false;
           document.getElementById("ros1").disabled = false;
           document.getElementById("braf").disabled = false;
-          document.getElementById("ntrk").disabled = false;
+          document.getElementById("ntrk").disabled = true;
         } else {
-          document.getElementById("rea").disabled = true;
+          document.getElementById("pdl1").disabled = false;
+          document.getElementById("egfr").disabled = true;
+          document.getElementById("alk").disabled = true;
           document.getElementById("ros1").disabled = true;
           document.getElementById("braf").disabled = true;
           document.getElementById("ntrk").disabled = true;
-          document.getElementById("egfr").disabled = true;
-          document.getElementById("pdl1").disabled = false;
+          
         }
       }
-      if (element.value == "cncp") {
+      if (element.value == "cnpc") {
         document.getElementById("hist-type").disabled = false;
-      } else {
-        document.getElementById("hist-type").disabled = true;
+
       }
     }
   </script>
 
   <script type="text/javascript">
     function histComb_(element) {
-      if (element.value == "Adénocarcinome") {
+      if (element.value == "Non epidermoide") {
         document.getElementById("pdl1").disabled = false;
         document.getElementById("egfr").disabled = false;
-        document.getElementById("rea").disabled = false;
+        document.getElementById("alk").disabled = false;
         document.getElementById("ros1").disabled = false;
         document.getElementById("braf").disabled = false;
         document.getElementById("ntrk").disabled = false;
       } else {
         document.getElementById("pdl1").disabled = false;
         document.getElementById("egfr").disabled = true;
-        document.getElementById("rea").disabled = true;
+        document.getElementById("alk").disabled = true;
         document.getElementById("ros1").disabled = false;
         document.getElementById("braf").disabled = false;
         document.getElementById("ntrk").disabled = false;
@@ -684,44 +685,49 @@
                   <h2> Anatomopathologie </h2>
                   <label id="hist-label"> Histologie: </label>
                   <select id="hist" class="chimio" onchange="histComb(this);">
-                    <option value="cpc"> CPC </option>
-                    <option value="cnpc"> CNPC </option>
+                    <option value="N/A"></option>
+                    <option value="CPC"> CPC </option>
+                    <option value="CNPC"> CNPC </option>
                   </select>
                   <br>
                   <br>
                   <label id="hist-type-label"> Type d'Histologie: </label>
                   <select id="hist-type" disabled onchange="histComb_(this);">
-                    <option value="Non Epidermoïde"> Adénocarcinome </option>
-                    <option value="Epidermoïde"> Epidermoïde </option>
+                    <option value="Non epidermoide"> Adénocarcinome </option>
+                    <option value="Epidermoide"> Epidermoïde </option>
                   </select>
                   <br>
                   <br>
                   <div id="frame-hist">
                     <label> Mutation activatrice du gène EGFR: </label>
                     <select id="egfr" class="chimio">
-                      <option value="oui"> Oui </option>
-                      <option value="non"> Non </option>
+                      <option value="N/A"></option>
+                      <option value="Positif"> Positif </option>
+                      <option value="Negatif"> Négatif </option>
                     </select>
                     <br>
                     <br>
                     <label> Réarrangement du gène de fusion ALK: </label>
                     <select id="alk" name="alk" class="chimio">
-                      <option id="Non"> Non </option>
-                      <option id="Oui"> Oui </option>
+                      <option value="N/A"></option>
+                      <option value="Positif"> Positif </option>
+                      <option value="Negatif"> Negatif </option>
                     </select>
                     <br>
                     <br>
                     <label> Réarrangement RoS1: </label>
                     <select id="ros1" name="ros1" class="chimio">
-                      <option id="Non"> Non </option>
-                      <option id="Oui"> Oui </option>
+                      <option value="N/A"></option>
+                      <option value="Positif"> Positif </option>
+                      <option value="Negatif"> Negatif </option>
                     </select>
                     <br>
                     <br>
                     <label> Statut de mutation BRAF: </label>
                     <select id="braf">
-                      <option id="Non"> Non </option>
-                      <option id="Oui"> Oui </option>
+                      <option value="N/A"></option>
+                      <option value="Positif"> Positif </option>
+                      <option value="Negatif"> Negatif </option>
                     </select>
                     <br>
                     <br>
@@ -736,9 +742,10 @@
                     </div>
                     <label> PDL1: </label>
                     <select id="pdl1" name="pdl1" class="chimio">
-                      <option id="Non"> Négatif </option>
-                      <option id="Oui"> Positif <=50% </option>
-                      <option id="Oui"> Positif >50% </option>
+                      <option value="N/A"></option>
+                      <option value="Negatif"> Négatif </option>
+                      <option value="Positif <=50%"> Positif <=50% </option>
+                      <option value="Positif >50%"> Positif >50% </option>
                     </select>
                     <br>
                     <br>
@@ -930,6 +937,7 @@
                       <br>
                       <label> Audiométrie: </label>
                       <select class="chimio" id="audiometrie">
+                        <option value="N/A"></option>
                         <option value="Fonction auditive normale">Fonction auditive normale</option>
                         <option value="Surdité légère">Surdité légère</option>
                         <option value="Surdité modérée">Surdité modérée</option>
@@ -948,6 +956,8 @@
                 </div>
 
                 <div id="protocole" class="onglet">
+                  <h2>Protocole</h2>
+                  <br>
                 </div>
 
                 <div id="ordonnance" class="onglet">
