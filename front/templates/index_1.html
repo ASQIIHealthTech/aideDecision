@@ -3,7 +3,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>Aide à la décision</title>
+  <title>Aide à la decision</title>
   <link rel="stylesheet" href="../static/css/styles.css">
   <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
   <link rel="stylesheet" href="../static/css/bootstrap.min.css">
@@ -50,7 +50,7 @@
     function histComb(element) {
       if (element.value == "cpc") {
         document.getElementById("hist-type").disabled = true
-        if (localStorage.getItem("tabac-actif") == "Non" ||  parseInt(localStorage.getItem("paquet-annee")) < 15) {
+        if (localStorage.getItem("tabac-actif") == "Non" || parseInt(localStorage.getItem("paquet-annee")) < 15) {
           document.getElementById("pdl1").disabled = false;
           document.getElementById("egfr").disabled = false;
           document.getElementById("alk").disabled = false;
@@ -64,7 +64,7 @@
           document.getElementById("ros1").disabled = true;
           document.getElementById("braf").disabled = true;
           document.getElementById("ntrk").disabled = true;
-          
+
         }
       }
       if (element.value == "cnpc") {
@@ -130,22 +130,25 @@
               <button id="habitude-h" class="btn btn-light col-sm-1"
                 onclick="openOnglet(event, 'habitudes', 'onglet')">Habitudes</button>
               <button id="antcd-h" class="btn btn-light col-sm-1"
-                onclick="openOnglet(event, 'antcd', 'onglet');" >Antécédents</button>
+                onclick="openOnglet(event, 'antcd', 'onglet');">Antecedents</button>
               <button id="clinique-h" class="btn btn-light col-sm-1"
                 onclick="openOnglet(event, 'clinique', 'onglet');">Clinique</button>
               <button id="examen-h" class="btn btn-light col-sm-1"
                 onclick="openOnglet(event, 'examen', 'onglet');">Examens</button>
               <button id="imagerie-h" class="btn btn-light col-sm-1"
-                onclick="openOnglet(event, 'imagerie', 'onglet');" >Imagerie</button>
+                onclick="openOnglet(event, 'imagerie', 'onglet');">Imagerie</button>
               <button id="diag-h" class="btn btn-light col-sm-2"
-                onclick="openOnglet(event, 'diagnostic-histologique', 'onglet');" >diagnostic histologique</button>
-              <button id="ctnm-h" class="btn btn-light col-sm-1" onclick="openOnglet(event, 'ctnm', 'onglet');">cTNM</button>
+                onclick="openOnglet(event, 'diagnostic-histologique', 'onglet');">diagnostic histologique</button>
+              <button id="ctnm-h" class="btn btn-light col-sm-1"
+                onclick="openOnglet(event, 'ctnm', 'onglet');">cTNM</button>
               <button id="antomo-h" class="btn btn-light col-sm-1"
                 onclick="openOnglet(event, 'anatomo', 'onglet');">Anatomopathologie</button>
-              <button id="bilan-h" class="btn btn-light col-sm-1" onclick="openOnglet(event, 'bilan-extension', 'onglet');" >Bilan
+              <button id="bilan-h" class="btn btn-light col-sm-1"
+                onclick="openOnglet(event, 'bilan-extension', 'onglet');">Bilan
                 d'extention</button>
-              <button id="bilan-pre-h" class="btn btn-light col-sm-1" onclick="openOnglet(event, 'bilan-pre', 'onglet');" >Bilan
-                préopératoire et pré-radiothérapie</button>
+              <button id="bilan-pre-h" class="btn btn-light col-sm-1"
+                onclick="openOnglet(event, 'bilan-pre', 'onglet');">Bilan
+                preoperatoire et pre-radiotherapie</button>
               <button id="traitement-h" class="btn btn-light col-sm-1"
                 onclick="openOnglet(event, 'traitement', 'onglet');">Traitement</button>
               <button id="protocole-h" class="btn btn-light col-sm-1"
@@ -211,7 +214,7 @@
                     <option value="Oui">Oui</option>
                     <option value="Non">Non</option>
                   </select>
-                  <label id="pa-label" for="pa"> Paquet année:</label>
+                  <label id="pa-label" for="pa"> Paquet annee:</label>
                   <input type="number" name="paquetAnnee" id="pa" class="save" placeholder="PA" min="1" max="40"
                     style="width:100px;" required>
                   <br>
@@ -241,7 +244,7 @@
                     <option value="Oui">Oui</option>
                   </select>
                   <br>
-                  <label for="exposition-profesionel">Exposition professionnelle à des cancérogènes :</label>
+                  <label for="exposition-profesionel">Exposition professionnelle à des cancerogènes :</label>
                   <select name="exposition" id="exposition-profesionel" class="save">
                     <option value="Non">Non</option>
                     <option value="Oui">Oui</option>
@@ -251,8 +254,8 @@
 
                 </div>
                 <div id="antcd" class="onglet">
-                  <h2>Antécédents</h2>
-                  <label for="atcd-medicaux">ATCD Médicaux :</label>
+                  <h2>Antecedents</h2>
+                  <label for="atcd-medicaux">ATCD Medicaux :</label>
                   <select name="atcdMedicaux" id="atcd-medicaux" class="save" multiple>
                     <option value="Insuffisance respiratoire">Insuffisance respiratoire</option>
                     <option value="Cancer">Cancer</option>
@@ -268,7 +271,7 @@
                   </select>
                   <br>
 
-                  <label for="radio_thoracique">Radiothérapie thoracique :</label>
+                  <label for="radio_thoracique">Radiotherapie thoracique :</label>
                   <select name="radioTherapieThoracique" id="radio_thoracique" class="save">
                     <option value="Non">Non</option>
                     <option value="Oui">Oui</option>
@@ -276,7 +279,7 @@
 
                   <br>
 
-                  <label for="atcd-familiaux">Antécédents familiaux de néoplasie :</label>
+                  <label for="atcd-familiaux">Antecedents familiaux de neoplasie :</label>
                   <select name="atcdFamiliaux" id="atcd-familiaux" class="save">
                     <option value="Non">Non</option>
                     <option value="Oui">Oui</option>
@@ -289,12 +292,12 @@
                 </div>
 
                 <div id="clinique" class="onglet">
-                  <h2>Circonstances de découverte Clinique</h2>
+                  <h2>Circonstances de decouverte Clinique</h2>
                   <label for="symptomes-respiratoires">Symptômes respiratoires :</label>
                   <select name="symptomesRespiratoires" id="symptomes-respiratoires" class="save" multiple>
                     <option value="Toux chronique">Toux chronique</option>
-                    <option value="Dyspnée">Dyspnée</option>
-                    <option value="Hémoptysie">Hémoptysie </option>
+                    <option value="Dyspnee">Dyspnee</option>
+                    <option value="Hemoptysie">Hemoptysie </option>
                     <option value="Pneumopathie">Pneumopathie</option>
                   </select>
 
@@ -304,11 +307,11 @@
                     min="1" max="24" value="0" disabled>
                   <br>
 
-                  <label for="envahissement-local">Signes d'envahissement local et régional :</label>
+                  <label for="envahissement-local">Signes d'envahissement local et regional :</label>
                   <select name="envahissementLocal" id="envahissement-local" class="save" multiple>
-                    <option value="Douleur pariétale">Douleur pariétale</option>
+                    <option value="Douleur parietale">Douleur parietale</option>
                     <option value="Epanchement pleural">Epanchement pleural</option>
-                    <option value="Syndrome cave supérieur">Syndrome cave supérieur </option>
+                    <option value="Syndrome cave superieur">Syndrome cave superieur </option>
                     <option value="Dysphonie">Dysphonie</option>
                     <option value="Hoquet">Hoquet</option>
                     <option value="Syndrome de Pancoast-Tobias">Syndrome de Pancoast-Tobias</option>
@@ -321,21 +324,21 @@
                     placeholder="semaines" min="1" max="24" value="0" disabled>
                   <br>
 
-                  <label for="envahissement-distance">Envahissement métastatique à distance :</label>
+                  <label for="envahissement-distance">Envahissement metastatique à distance :</label>
                   <select name="envahissementDistance" id="envahissement-distance" class="save" multiple>
-                    <option value="Symptômes cérébrales">Symptômes cérébrales</option>
+                    <option value="Symptômes cerebrales">Symptômes cerebrales</option>
                     <option value="Symptômes osseuses">Symptômes osseuses</option>
-                    <option value="Symptômes hépatiques">Symptômes hépatiques </option>
-                    <option value="Symptômes surrénaliennes">Symptômes surrénaliennes</option>
-                    <option value="Symptômes ganglionnaires médiastinales">Symptômes ganglionnaires médiastinales
+                    <option value="Symptômes hepatiques">Symptômes hepatiques </option>
+                    <option value="Symptômes surrenaliennes">Symptômes surrenaliennes</option>
+                    <option value="Symptômes ganglionnaires mediastinales">Symptômes ganglionnaires mediastinales
                     </option>
                     <option value="Symptômes ganglionnaires susclaviculaires">Symptômes ganglionnaires susclaviculaires
                     </option>
-                    <option value="Tableau d'insuffisance surrénalienne aiguë">Tableau d'insuffisance surrénalienne
+                    <option value="Tableau d'insuffisance surrenalienne aiguë">Tableau d'insuffisance surrenalienne
                       aiguë</option>
-                    <option value="Tableau d'insuffisance surrénalienne chronique">Tableau d'insuffisance surrénalienne
+                    <option value="Tableau d'insuffisance surrenalienne chronique">Tableau d'insuffisance surrenalienne
                       chronique</option>
-                    <option value="Altération de l'état général">Altération de l'état général</option>
+                    <option value="Alteration de l'etat general">Alteration de l'etat general</option>
 
 
                   </select>
@@ -345,21 +348,21 @@
                     placeholder="semaines" min="1" max="24" value="0" disabled>
                   <br>
 
-                  <label for="syndromes-paraneoplasiques">Syndromes paranéoplasiques :</label>
+                  <label for="syndromes-paraneoplasiques">Syndromes paraneoplasiques :</label>
                   <select name="syndromesParaneoplasiques" id="syndromes-paraneoplasiques" class="save" multiple>
-                    <option value="Ostéo-arthropathie hypertrophiante pneumique de Pierre Marie">Ostéo-arthropathie
+                    <option value="Osteo-arthropathie hypertrophiante pneumique de Pierre Marie">Osteo-arthropathie
                       hypertrophiante pneumique de Pierre Marie</option>
                     <option value="SIADH">SIADH</option>
-                    <option value="Cushing paranéoplasique">Cushing paranéoplasique </option>
+                    <option value="Cushing paraneoplasique">Cushing paraneoplasique </option>
                     <option value="Maladie thromboembolique veineuse">Maladie thromboembolique veineuse</option>
                     <option value="Polyglobulie">Polyglobulie </option>
-                    <option value="Hypercalcémie par production de PTHrp">Hypercalcémie par production de PTHrp</option>
-                    <option value="Gynécomastie">Gynécomastie</option>
-                    <option value="Syndrome myasthéniforme de Lambert-Eaton">Syndrome myasthéniforme de Lambert-Eaton
+                    <option value="Hypercalcemie par production de PTHrp">Hypercalcemie par production de PTHrp</option>
+                    <option value="Gynecomastie">Gynecomastie</option>
+                    <option value="Syndrome myastheniforme de Lambert-Eaton">Syndrome myastheniforme de Lambert-Eaton
                     </option>
-                    <option value="Neuropathie périphérique">Neuropathie périphérique</option>
-                    <option value="Polyradiculonévrite">Polyradiculonévrite</option>
-                    <option value="Encéphalopathie paranéoplasique">Encéphalopathie paranéoplasique</option>
+                    <option value="Neuropathie peripherique">Neuropathie peripherique</option>
+                    <option value="Polyradiculonevrite">Polyradiculonevrite</option>
+                    <option value="Encephalopathie paraneoplasique">Encephalopathie paraneoplasique</option>
                   </select>
 
                   <label id="temp-id" for="temps-syndromes-paraneoplasiques">Depuis Combien de semaines ?</label>
@@ -383,15 +386,15 @@
                   <br>
                   <label for="oms">OMS :</label>
                   <select name="oms" id="oms" class="save">
-                    <option value="OMS 0">OMS 0 Activité normale sans restriction</option>
-                    <option value="OMS 1">OMS 1 Restreint pour des activités physiques importantes, mais patient
-                      ambulant et capable de fournir un travail léger</option>
+                    <option value="OMS 0">OMS 0 Activite normale sans restriction</option>
+                    <option value="OMS 1">OMS 1 Restreint pour des activites physiques importantes, mais patient
+                      ambulant et capable de fournir un travail leger</option>
                     <option value="OMS 2">OMS 2 Ambulant et capable de se prendre en charge, mais incapable de fournir
-                      un travail et alité pendant moins de 50% de son temps</option>
-                    <option value="OMS 3">OMS 3 Capacité de prise en charge propre beaucoup plus limité. Passe plus de
+                      un travail et alite pendant moins de 50% de son temps</option>
+                    <option value="OMS 3">OMS 3 Capacite de prise en charge propre beaucoup plus limite. Passe plus de
                       50% de son temps au lit ou dans une chaise.</option>
                     <option value="OMS 4">OMS 4 Complètement grabataire. Incapable de se prendre en charge. Le patient
-                      reste totalement confiné au lit ou dans une chaise</option>
+                      reste totalement confine au lit ou dans une chaise</option>
                   </select>
 
                   <br>
@@ -400,9 +403,9 @@
                   <input type="number" name="spo2" id="spo2" class="save" placeholder="" min="0" max="100" required>
                   <br>
 
-                  <label for="examen-pulmonaire">Examen pulmonaire et régional :</label>
+                  <label for="examen-pulmonaire">Examen pulmonaire et regional :</label>
                   <select name="examenPulmonaire" id="examen-pulmonaire" class="save">
-                    <option value="Syndrome cave supérieur">Syndrome cave supérieur</option>
+                    <option value="Syndrome cave superieur">Syndrome cave superieur</option>
                     <option value="Epanchement pleural">Epanchement pleural</option>
                   </select>
 
@@ -410,18 +413,18 @@
 
                   <label for="examen-ganglionnaire">Examen ganglionnaire :</label>
                   <select name="examenGanglionnaire" id="examen-ganglionnaire" class="save">
-                    <option value="Adenopathie Axillaire">Adénopathie Axillaire</option>
-                    <option value="Adenopathie Susclaviculaire">Adénopathie Susclaviculaire</option>
+                    <option value="Adenopathie Axillaire">Adenopathie Axillaire</option>
+                    <option value="Adenopathie Susclaviculaire">Adenopathie Susclaviculaire</option>
                   </select>
 
                   <br>
 
-                  <label for="examen-general">Examen général :</label>
+                  <label for="examen-general">Examen general :</label>
                   <select name="examenGeneral" id="examen-general" class="save">
-                    <option value="Altération de l'état général">Altération de l'état général</option>
+                    <option value="Alteration de l'etat general">Alteration de l'etat general</option>
                     <option value="Douleur osseuse à la palpation">Douleur osseuse à la palpation</option>
-                    <option value="Hépatomégalie, hépatalgie, ictère">Hépatomégalie, hépatalgie, ictère</option>
-                    <option value="Déficit sensitivomoteur, atteinte d'un nerf crânien, HTIC">Déficit sensitivomoteur,
+                    <option value="Hepatomegalie, hepatalgie, ictère">Hepatomegalie, hepatalgie, ictère</option>
+                    <option value="Deficit sensitivomoteur, atteinte d'un nerf crânien, HTIC">Deficit sensitivomoteur,
                       atteinte d'un nerf crânien, HTIC</option>
                     <option value="Syndrome de Pancoast-Tobias">Syndrome de Pancoast-Tobias</option>
                   </select>
@@ -432,7 +435,7 @@
                   <input id="examen-continue" type="submit" name="btn" value="Continuer" class="btn">
                 </div>
 
-                <div id="imagerie" class="onglet" >
+                <div id="imagerie" class="onglet">
                   <h2>Radiothorax</h2>
 
                   <label for="radiothoraxNormal"> Radiothorax Normal :</label>
@@ -441,10 +444,10 @@
 
                   <br>
 
-                  <label for="opacite">Opacité :</label>
+                  <label for="opacite">Opacite :</label>
                   <select name="opacite" id="opacite" class="save">
                     <option value="pulmonaire">pulmonaire</option>
-                    <option value="médiastinopulmonaire">médiastinopulmonaire</option>
+                    <option value="mediastinopulmonaire">mediastinopulmonaire</option>
 
                   </select>
                   <br>
@@ -452,7 +455,7 @@
                   <label for="adenopathies">Adenopathies :</label>
                   <select name="Adenopathies" id="Adenopathies" class="save">
                     <option value="hiliaires">hiliaires</option>
-                    <option value="médiastinales">médiastinales</option>
+                    <option value="mediastinales">mediastinales</option>
 
                   </select>
                   <br>
@@ -501,28 +504,28 @@
                   <label for="locale">Locale :</label>
                   <select name="locale" id="locale" class="save">
                     <option value="plèvre">plèvre</option>
-                    <option value="médiastin">médiastin</option>
+                    <option value="mediastin">mediastin</option>
                     <option value="paroi thoracique">paroi thoracique</option>
 
                   </select>
                   <br>
 
 
-                  <label for="regionale">Régionale :</label>
+                  <label for="regionale">Regionale :</label>
                   <select name="regionale" id="regionale" class="save">
-                    <option value="Adénopathies hiliaires ou médiastinales homolatérales">Adénopathies hiliaires ou
-                      médiastinales homolatérales</option>
-                    <option value="Adénopathies hiliaires ou médiastinales controlatérales (N3)">Adénopathies hiliaires
-                      ou médiastinales controlatérales (N3)</option>
+                    <option value="Adenopathies hiliaires ou mediastinales homolaterales">Adenopathies hiliaires ou
+                      mediastinales homolaterales</option>
+                    <option value="Adenopathies hiliaires ou mediastinales controlaterales (N3)">Adenopathies hiliaires
+                      ou mediastinales controlaterales (N3)</option>
 
                   </select>
                   <br>
 
 
-                  <label for="metastatique">Métastatique :</label>
+                  <label for="metastatique">Metastatique :</label>
                   <select name="metastatique" id="metastatique" class="save">
-                    <option value="controlatérales">controlatérales</option>
-                    <option value="métastases osseuses">métastases osseuses</option>
+                    <option value="controlaterales">controlaterales</option>
+                    <option value="metastases osseuses">metastases osseuses</option>
 
                   </select>
                   <br>
@@ -556,7 +559,7 @@
                   <br>
 
 
-                  <label for="mediastinoscopie">Médiastinoscopie :</label>
+                  <label for="mediastinoscopie">Mediastinoscopie :</label>
                   <select name="meddiastinoscopie" id="mediastinoscopie" onchange="disableChoice(this,'Biopsie_b')">
                     <option value="Oui">Oui</option>
                     <option value="Non">Non</option>
@@ -620,29 +623,29 @@
                   <h2>cTNM</h2>
                   <label id="t-label">T :</label>
                   <select id="t">
-                    <option value="T1">Tumeur entourée de poumon ou de plèvre viscérale, sans preuve bronchoscopique
+                    <option value="T1">Tumeur entouree de poumon ou de plèvre viscerale, sans preuve bronchoscopique
                       d'invasion plus proximale que la bronche lobaire</option>
                     <option value="T2"> Tumeur implique la bronche principale quelle que soit la distance à la carène,
                       mais sans implication de la carène</option>
-                    <option value="T2"> Tumeur envahit la plèvre viscérale </option>
-                    <option value="T2"> Tumeur associé à une atélectasie ou à une pneumonie obstructive qui s'étend à la
-                      région hilaire impliquant une partie ou la totalité du poumon </option>
-                    <option value="T3"> Tumeur qui envahit directement la plèvre pariétale </option>
+                    <option value="T2"> Tumeur envahit la plèvre viscerale </option>
+                    <option value="T2"> Tumeur associe à une atelectasie ou à une pneumonie obstructive qui s'etend à la
+                      region hilaire impliquant une partie ou la totalite du poumon </option>
+                    <option value="T3"> Tumeur qui envahit directement la plèvre parietale </option>
                     <option value="T3"> Tumeur qui envahit directement la paroi thoracique (y compris les tumeurs du
-                      sillon supérieur) </option>
-                    <option value="T3"> Tumeur qui envahit directement le nerf phrénique </option>
-                    <option value="T3"> Tumeur qui envahit directement le péricarde pariétal </option>
-                    <option value="T3"> Nodule(s) tumoral(s) séparé(s) dans le même lobe que le primitif </option>
+                      sillon superieur) </option>
+                    <option value="T3"> Tumeur qui envahit directement le nerf phrenique </option>
+                    <option value="T3"> Tumeur qui envahit directement le pericarde parietal </option>
+                    <option value="T3"> Nodule(s) tumoral(s) separe(s) dans le même lobe que le primitif </option>
                     <option value="T4"> Tumeur qui envahit le diaphragme </option>
-                    <option value="T4"> Tumeur qui envahit le médiastin </option>
+                    <option value="T4"> Tumeur qui envahit le mediastin </option>
                     <option value="T4"> Tumeur qui envahit le cœur </option>
                     <option value="T4"> Tumeur qui envahit les gros vaisseaux </option>
-                    <option value="T4"> Tumeur qui envahit le trachée </option>
-                    <option value="T4"> Tumeur qui envahit le nerf laryngé récurrent </option>
+                    <option value="T4"> Tumeur qui envahit le trachee </option>
+                    <option value="T4"> Tumeur qui envahit le nerf larynge recurrent </option>
                     <option value="T4"> Tumeur qui envahit l'œsophage </option>
-                    <option value="T4"> Tumeur qui envahit le corps vertébral </option>
+                    <option value="T4"> Tumeur qui envahit le corps vertebral </option>
                     <option value="T4"> Tumeur qui envahit la carène </option>
-                    <option value="T4"> Nodule(s) tumoral(s) séparé(s) dans un lobe ipsilatéral différent de celui du
+                    <option value="T4"> Nodule(s) tumoral(s) separe(s) dans un lobe ipsilateral different de celui du
                       primaire </option>
                   </select>
                   <br>
@@ -653,25 +656,25 @@
                   <br>
                   <label id="n-label">N :</label>
                   <select id="n">
-                    <option value="N0"> Pas de métastases ganglionnaires régionales </option>
-                    <option value="N1"> Métastases dans les ganglions lymphatiques péribronchiques et/ou hilaires
-                      homolatéraux et les ganglions intrapulmonaires, y compris l'atteinte par extension directe
+                    <option value="N0"> Pas de metastases ganglionnaires regionales </option>
+                    <option value="N1"> Metastases dans les ganglions lymphatiques peribronchiques et/ou hilaires
+                      homolateraux et les ganglions intrapulmonaires, y compris l'atteinte par extension directe
                     </option>
-                    <option value="N2"> Métastases dans les ganglions lymphatiques médiastinaux et/ou sous-carinaux
-                      ipsilatéraux </option>
-                    <option value="N3"> Métastases dans le médiastin controlatéral, hilaire controlatéral, scalène
-                      ipsilatéral ou controlatéral ou ganglion(s) lymphatique(s) supraclaviculaire(s) </option>
+                    <option value="N2"> Metastases dans les ganglions lymphatiques mediastinaux et/ou sous-carinaux
+                      ipsilateraux </option>
+                    <option value="N3"> Metastases dans le mediastin controlateral, hilaire controlateral, scalène
+                      ipsilateral ou controlateral ou ganglion(s) lymphatique(s) supraclaviculaire(s) </option>
                   </select>
                   <br>
                   <br>
 
                   <label id="m-id">M: </label>
                   <select id="m">
-                    <option value="M0"> Pas de métastase à distance </option>
-                    <option value="M1a"> Nodule(s) tumoral(s) séparé(s) dans un lobe controlatéral ; tumeur avec nodules
-                      pleuraux ou péricardiques ou épanchement pleural ou péricardique malin </option>
-                    <option value="M1b"> Métastase extrathoracique unique dans un seul organe </option>
-                    <option value="M1c"> Métastases extrathoraciques multiples dans un ou plusieurs organes </option>
+                    <option value="M0"> Pas de metastase à distance </option>
+                    <option value="M1a"> Nodule(s) tumoral(s) separe(s) dans un lobe controlateral ; tumeur avec nodules
+                      pleuraux ou pericardiques ou epanchement pleural ou pericardique malin </option>
+                    <option value="M1b"> Metastase extrathoracique unique dans un seul organe </option>
+                    <option value="M1c"> Metastases extrathoraciques multiples dans un ou plusieurs organes </option>
                   </select>
                   <br>
                   <br>
@@ -693,7 +696,7 @@
                   <br>
                   <label id="hist-type-label"> Type d'Histologie: </label>
                   <select id="hist-type" disabled onchange="histComb_(this);">
-                    <option value="Non epidermoide"> Adénocarcinome </option>
+                    <option value="Non epidermoide"> Adenocarcinome </option>
                     <option value="Epidermoide"> Epidermoïde </option>
                   </select>
                   <br>
@@ -703,11 +706,11 @@
                     <select id="egfr" class="chimio">
                       <option value="N/A"></option>
                       <option value="Positif"> Positif </option>
-                      <option value="Negatif"> Négatif </option>
+                      <option value="Negatif"> Negatif </option>
                     </select>
                     <br>
                     <br>
-                    <label> Réarrangement du gène de fusion ALK: </label>
+                    <label> Rearrangement du gène de fusion ALK: </label>
                     <select id="alk" name="alk" class="chimio">
                       <option value="N/A"></option>
                       <option value="Positif"> Positif </option>
@@ -715,7 +718,7 @@
                     </select>
                     <br>
                     <br>
-                    <label> Réarrangement RoS1: </label>
+                    <label> Rearrangement RoS1: </label>
                     <select id="ros1" name="ros1" class="chimio">
                       <option value="N/A"></option>
                       <option value="Positif"> Positif </option>
@@ -732,7 +735,7 @@
                     <br>
                     <br>
                     <div id="nrtk-div">
-                      <label> Réarrangement NTRK: </label>
+                      <label> Rearrangement NTRK: </label>
                       <select id="ntrk">
                         <option id="Non"> Non </option>
                         <option id="Oui"> Oui </option>
@@ -743,7 +746,7 @@
                     <label> PDL1: </label>
                     <select id="pdl1" name="pdl1" class="chimio">
                       <option value="N/A"></option>
-                      <option value="Negatif"> Négatif </option>
+                      <option value="Negatif"> Negatif </option>
                       <option value="Positif <=50%"> Positif <=50% </option>
                       <option value="Positif >50%"> Positif >50% </option>
                     </select>
@@ -762,43 +765,43 @@
                   <select id="pet-scan">
                     <option value="M0"> Pas de foyers d'hyperfixation </option>
                     <option value="M1"> Foyers d'hyperfixation </option>
-                    <option value="M1"> Métastase osseuse </option>
+                    <option value="M1"> Metastase osseuse </option>
                   </select>
                   <br>
                   <br>
                   <label> TDM abdominale: </label>
                   <select id="tdm-abdo">
-                    <option value="M0"> Pas de métastases </option>
-                    <option value="M1"> Métastase hépatique </option>
-                    <option value="M1"> Métastase surrénalienne </option>
+                    <option value="M0"> Pas de metastases </option>
+                    <option value="M1"> Metastase hepatique </option>
+                    <option value="M1"> Metastase surrenalienne </option>
                   </select>
                   <br>
                   <br>
-                  <label> TDM cérébrale: </label>
+                  <label> TDM cerebrale: </label>
                   <select id="tdm-cere">
-                    <option value="M0"> Pas de métastases </option>
-                    <option value="M1"> Métastase cérébrale </option>
+                    <option value="M0"> Pas de metastases </option>
+                    <option value="M1"> Metastase cerebrale </option>
                   </select>
                   <br>
                   <br>
                   <label> Scintigraphie: </label>
                   <select id="scin">
-                    <option value="M0"> Pas de métastases </option>
-                    <option value="M1"> Métastase osseuse </option>
+                    <option value="M0"> Pas de metastases </option>
+                    <option value="M1"> Metastase osseuse </option>
                   </select>
                   <br>
                   <br>
-                  <label> IRM cérébrale: </label>
+                  <label> IRM cerebrale: </label>
                   <select id="irm-cere">
-                    <option id="M0"> Pas de métastases </option>
-                    <option id="M1"> Métastase cérébrale </option>
+                    <option value="M0"> Pas de metastases </option>
+                    <option value="M1"> Metastase cerebrale </option>
                   </select>
                   <br>
                   <br>
                   <label> IRM rachidienne: </label>
                   <select id="irm-rachid">
-                    <option id="0"> Compression médullaire </option>
-                    <option id="1"> Pas de compression médullaire </option>
+                    <option value="M0"> Pas de compression medullaire </option>
+                    <option value="M1"> Compression medullaire </option>
                   </select>
                   <br>
                   <br>
@@ -812,18 +815,24 @@
                     <div class="row">
                       <div class="col-sm-12">
                         <div class="row">
-                          <button class="btn btn-light col-sm-3" onclick="openOnglet(event, 'eval-resp', 'onglet-eval');">Evaluation de fonction respiratoire</button>
-                          <button class="btn btn-light col-md-3" onclick="openOnglet(event, 'eval-cardio', 'onglet-eval');"> Evaluation cardiovasculaire </button>
-                          <button class="btn btn-light col-md-3" onclick="openOnglet(event, 'etat-gen', 'onglet-eval');"> Etat général </button>
-                          <button class="btn btn-light col-md-3" onclick="openOnglet(event, 'audiometrie', 'onglet-eval');"> Audiométrie </button>
+                          <button class="btn btn-light col-sm-3"
+                            onclick="openOnglet(event, 'eval-resp', 'onglet-eval');">Evaluation de fonction
+                            respiratoire</button>
+                          <button class="btn btn-light col-md-3"
+                            onclick="openOnglet(event, 'eval-cardio', 'onglet-eval');"> Evaluation cardiovasculaire
+                          </button>
+                          <button class="btn btn-light col-md-3"
+                            onclick="openOnglet(event, 'etat-gen', 'onglet-eval');"> Etat general </button>
+                          <button class="btn btn-light col-md-3"
+                            onclick="openOnglet(event, 'audiometrie', 'onglet-eval');"> Audiometrie </button>
                         </div>
                       </div>
                     </div>
                   </nav>
 
-                  <div class="row onget-eval" id="eval-resp" >
+                  <div class="row onget-eval" id="eval-resp">
                     <div class="col-sm-4">
-                      <h5> Gaz du sang artériel </h5>
+                      <h5> Gaz du sang arteriel </h5>
                       <label> pH: </label>
                       <input type="number" min="0" max="14" placeholder="pH" class="save">
                       <br>
@@ -837,17 +846,17 @@
                       <input type="number" placeholder="mmol/L" class="save">
                     </div>
                     <div class="col-sm-4">
-                      <h5> EFR avec spirométrie </h5>
+                      <h5> EFR avec spirometrie </h5>
                       <label> Volume Courant (VC): </label>
                       <input type="number" id="vc" placeholder="ml/Kg" class="save">
                       <br>
-                      <label> Volume de réserve inspiratoire (VRI): </label>
+                      <label> Volume de reserve inspiratoire (VRI): </label>
                       <input type="number" id="vri" placeholder="ml/Kg" class="save">
                       <br>
-                      <label> Volumre de réserve expiratoire (VRE): </label>
+                      <label> Volumre de reserve expiratoire (VRE): </label>
                       <input type="number" id="vre" placeholder="ml/Kg" class="save">
                       <br>
-                      <label> Volume Résiduel (VR): </label>
+                      <label> Volume Residuel (VR): </label>
                       <input type="number" id="vr" placeholder="ml/Kg" class="save">
                       <br>
                       <label> Volume Expiratoire Maximal Seconde (VEMS): </label>
@@ -858,7 +867,7 @@
                       <label> Mesure de la DLCO: </label>
                       <input type="number" placeholder="mL/min/mmHg" class="save">
                       <br>
-                      <label> VO<sub>2</sub> max (épreuve d'effort): </label>
+                      <label> VO<sub>2</sub> max (epreuve d'effort): </label>
                       <input type="number" placeholder="ml/min/Kg" class="save">
                       <br>
                       <label> Scintigraphie de ventilation: </label>
@@ -868,7 +877,7 @@
                       </select>
                     </div>
                   </div>
-                  <div class="row onglet-eval" id="eval-cardio" >
+                  <div class="row onglet-eval" id="eval-cardio">
                     <div class="col-sm-8">
                       <br>
                       <label> ECG:</label>
@@ -877,7 +886,7 @@
                         <option value="Crise cardiaque"> Crise cardiaque </option>
                         <option value="Blocage des artères coronaires"> Blocage des artères coronaires </option>
                         <option value="Dilatation du volume du coeur"> Dilatation du volume du coeur </option>
-                        <option value="Péricardite"> Péricardite </option>
+                        <option value="Pericardite"> Pericardite </option>
                         <option value="Pas d'anomalies cardiaques"> Pas d'anomalies cardiaques </option>
                       </select>
                     </div>
@@ -888,46 +897,50 @@
                         <option value="Insuffisance cardiaque">Insuffisance cardiaque</option>
                         <option value="Malformation cardiaque"> Malformation cardiaque</option>
                         <option value="Valvulopathie"> Valvulopathie</option>
-                        <option value="Epanchement péricardique"> Epanchement péricardique</option>
+                        <option value="Epanchement pericardique"> Epanchement pericardique</option>
                         <option value="Pas d'anomalies cardiaques"> Pas d'anomalies cardiaques </option>
                       </select>
                     </div>
                   </div>
-                  <div class="row onglet-eval" id="etat-gen" >
+                  <div class="row onglet-eval" id="etat-gen">
                     <div class="col-sm-8">
                       <br>
                       <label>PS: </label>
                       <select id="ps" name="ps" class="chimio">
                         <option value=""></option>
-                        <option value="0"> OMS 0 Activité normale sans restriction</option>
-                        <option value="1"> OMS 1 Restreint pour des activités physiques importantes, mais patient ambulant et capable de fournir un travail léger</option>
-                        <option value="2"> OMS 2 Ambulant et capable de se prendre en charge, mais incapable de fournir un travail et alité pendant moins de 50% de son temps</option>
-                        <option value="3"> OMS 3 Capacité de prise en charge propre beaucoup plus limité. Passe plus de 50% de son temps au lit ou dans une chaise.</option>
-                        <option value="4"> OMS 4 Complètement grabataire. Incapable de se prendre en charge. Le patient reste totalement confiné au lit ou dans une chaise.</option>
+                        <option value="0"> OMS 0 Activite normale sans restriction</option>
+                        <option value="1"> OMS 1 Restreint pour des activites physiques importantes, mais patient
+                          ambulant et capable de fournir un travail leger</option>
+                        <option value="2"> OMS 2 Ambulant et capable de se prendre en charge, mais incapable de fournir
+                          un travail et alite pendant moins de 50% de son temps</option>
+                        <option value="3"> OMS 3 Capacite de prise en charge propre beaucoup plus limite. Passe plus de
+                          50% de son temps au lit ou dans une chaise.</option>
+                        <option value="4"> OMS 4 Complètement grabataire. Incapable de se prendre en charge. Le patient
+                          reste totalement confine au lit ou dans une chaise.</option>
                       </select>
                       <br>
                       <label> Etat nutritionnel: </label>
                       <select>
-                        <option value="Régime alimentaire équilibré"> Régime alimentaire équilibré</option>
-                        <option value="Dénutrition"> Dénutrition</option>
+                        <option value="Regime alimentaire equilibre"> Regime alimentaire equilibre</option>
+                        <option value="Denutrition"> Denutrition</option>
                       </select>
                       <br>
-                      <label> Albuminémie: </label>
+                      <label> Albuminemie: </label>
                       <input type="number" placeholder="g/dl">
                       <br>
-                      <label> Fonction rénale: </label>
+                      <label> Fonction renale: </label>
                       <select>
-                        <option value="Fonction rénale normale"> Fonction rénale normale</option>
-                        <option value="Insuffisance rénale"> Insuffisance rénale</option>
+                        <option value="Fonction renale normale"> Fonction renale normale</option>
+                        <option value="Insuffisance renale"> Insuffisance renale</option>
                       </select>
                       <br>
-                      <label>Clairance de la créatinine: </label>
+                      <label>Clairance de la creatinine: </label>
                       <input id="clairance" type="number" class="chimio" placeholder="ml/min">
                       <br>
-                      <label>Fonction hépatique: </label>
+                      <label>Fonction hepatique: </label>
                       <select>
-                        <option value="Fonction hépatique normale"> Fonction hépatique normale </option>
-                        <option value="Insuffisance hépatique"> Insuffisance hépatique </option>
+                        <option value="Fonction hepatique normale"> Fonction hepatique normale </option>
+                        <option value="Insuffisance hepatique"> Insuffisance hepatique </option>
                       </select>
                     </div>
 
@@ -935,22 +948,22 @@
                   <div class="row onglet-eval">
                     <div class="col-sm-8">
                       <br>
-                      <label> Audiométrie: </label>
+                      <label> Audiometrie: </label>
                       <select class="chimio" id="audiometrie">
                         <option value="N/A"></option>
                         <option value="Fonction auditive normale">Fonction auditive normale</option>
-                        <option value="Surdité légère">Surdité légère</option>
-                        <option value="Surdité modérée">Surdité modérée</option>
-                        <option value="Surdité sévère">Surdité sévère</option>
-                        <option value="Surdité profonde">Surdité profonde</option>
-                        <option value="Surdité totale">Surdité totale</option>
+                        <option value="Surdite legère">Surdite legère</option>
+                        <option value="Surdite moderee">Surdite moderee</option>
+                        <option value="Surdite sevère">Surdite sevère</option>
+                        <option value="Surdite profonde">Surdite profonde</option>
+                        <option value="Surdite totale">Surdite totale</option>
                       </select>
                     </div>
                   </div>
 
                   <input id="bilan-pre-continue" type="submit" name="btn-bilan-pre" value="Continuer" class="btn">
                 </div>
-                
+
 
                 <div id="traitement" class="onglet">
                 </div>

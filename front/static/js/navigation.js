@@ -345,7 +345,7 @@ document.addEventListener("DOMContentLoaded", function () {
         var pec = document.getElementById("pec-select")
         var traitement = pec.options[pec.selectedIndex].innerHTML
         console.log(traitement)
-        if(traitement == "Chimiothérapie") {
+        if(traitement == "Chimiotherapie") {
             var histo = document.getElementById("hist").value
             var stade = document.getElementById("stade-span").innerHTML
             var vems = document.getElementById("vems").value
