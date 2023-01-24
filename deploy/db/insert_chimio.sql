@@ -1,4 +1,4 @@
-INSERT INTO Chimiothrapie VALUES (1001,'Epidermoide','N/A','N/A','N/A','N/A','N/A','N/A','N/A','N/A','N/A','Paclitaxel hebdomadaire-Carboplatine',58),
+INSERT INTO Chimiotherapie VALUES (1001,'Epidermoide','N/A','N/A','N/A','N/A','N/A','N/A','N/A','N/A','N/A','Paclitaxel hebdomadaire-Carboplatine',58),
 	(1001,'Epidermoide','N/A','N/A','N/A','N/A','N/A','N/A','N/A','N/A','N/A','Cisplatine-Etoposide',27),
 	(1001,'Non epidermoide','N/A','N/A','N/A','N/A','N/A','N/A','N/A','N/A','N/A','Carboplatine-Pemetrexed',22),
 	(1001,'Non epidermoide','N/A','N/A','N/A','N/A','N/A','N/A','N/A','N/A','N/A','Cisplatine-Pemetrexed',36),
