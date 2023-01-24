@@ -1,13 +1,11 @@
 version: '3.9'
-
     
 services:
 
   # front container
   front-app:
     container_name: mcda-front
-    image: front-mcda:latest
-    build: ../front/    
+    image: mcda-front:latest
     env_file:
       - .env
     ports:
@@ -15,8 +13,8 @@ services:
    
   # database
   mysqldb:
-    container_name: db-mcda
-    image: mysql:latest
+    container_name: mcda-db
+    image: mcda-db:latest
     env_file:
       - .env
     ports:
@@ -30,18 +28,18 @@ services:
    # api container
   springboot-app:
     restart: always
-    container_name: mcda-api
-    image: mcda-api:latest
-    build: ../api/
+    container_name: mcda-api-deploy
+    image: mcda-api-deploy:latest
     env_file:
       - .env
     environment:
       SPRING_APPLICATION_JSON: '{
-        "spring.datasource.url"  : "jdbc:mysql://mysqldb:$MYSQLDB_DOCKER_PORT/$MYSQLDB_DATABASE?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false",
+        "spring.datasource.url"  : "jdbc:mysql://mysqldb:$MYSQLDB_DOCKER_PORT/$MYSQLDB_DATABASE",
         "spring.datasource.username" : "$MYSQLDB_USER",
         "spring.datasource.password" : "$MYSQLDB_ROOT_PASSWORD",
         "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
-        "spring.jpa.hibernate.ddl-auto" : "update"
+        "spring.jpa.hibernate.ddl-auto" : "update",
+        "logging.file.path" : "logs"
       }'
     ports:
       - $SPRING_LOCAL_PORT:$SPRING_DOCKER_PORT
