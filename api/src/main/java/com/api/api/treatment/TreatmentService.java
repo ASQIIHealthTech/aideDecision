@@ -27,10 +27,6 @@ public class TreatmentService {
         }
 
         List<Object[]> Protocoles = treatmentRepository.findProtocole(
-            payload.get("histo"),
-            payload.get("stade"),
-            payload.get("vems"),
-            payload.get("paco2"),
             payload.get("type_histo"),
             payload.get("clairance"),
             payload.get("audiometrie"),

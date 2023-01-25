@@ -387,11 +387,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 ps = "N/A"
             }
 
-            let data = {
-                "histo": `${histo}`,
-                "stade": `${stade}`,
-                "vems": `${vems}`,
-                "paco2": `${paco2}`,
+            let data = { 
                 "type_histo": `${type_histo}`,
                 "clairance": `${clairance}`,
                 "audiometrie": `${audiometrie}`,
