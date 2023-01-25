@@ -1,4 +1,5 @@
 FROM mysql:latest
 
-COPY create_chimio.sql insert_chimio.sql /docker-entrypoint-initdb.d/
+ENV MYSQL_DATABASE mcda
+COPY create_schema.sql data_schema.sql /docker-entrypoint-initdb.d/
 

@@ -22,8 +22,7 @@ services:
     environment:
       - MYSQL_DATABASE=$MYSQLDB_DATABASE
       - MYSQL_ROOT_PASSWORD=$MYSQLDB_ROOT_PASSWORD
-    volumes:
-      - db:/var/lib/mysql
+    
     
    # api container
   springboot-app:
@@ -38,7 +37,9 @@ services:
         "spring.datasource.username" : "$MYSQLDB_USER",
         "spring.datasource.password" : "$MYSQLDB_ROOT_PASSWORD",
         "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
-        "spring.jpa.hibernate.ddl-auto" : "update",
+        "spring.jpa.show-sql" : "true",
+        "spring.jpa.properties.hibernate.format_sql" : "true",
+        "spring.jpa.hibernate.ddl-auto" : "update", 
         "logging.file.path" : "logs"
       }'
     ports:
@@ -47,9 +48,7 @@ services:
       - .m2:/root/.m2 
     depends_on:
       - mysqldb
-  
-volumes:
-  db:
+
   
   
   

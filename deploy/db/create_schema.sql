@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS Chimiotherapie (
+CREATE TABLE IF NOT EXISTS chimiotherapie (
     `id_pec` INT,
     `type_histo` VARCHAR(15) CHARACTER SET utf8,
     `clairance` VARCHAR(5) CHARACTER SET utf8,

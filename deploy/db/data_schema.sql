@@ -1,4 +1,4 @@
-INSERT INTO Chimiotherapie VALUES (1001,'Epidermoide','N/A','N/A','N/A','N/A','N/A','N/A','N/A','N/A','N/A','Paclitaxel hebdomadaire-Carboplatine',58),
+INSERT INTO chimiotherapie VALUES (1001,'Epidermoide','N/A','N/A','N/A','N/A','N/A','N/A','N/A','N/A','N/A','Paclitaxel hebdomadaire-Carboplatine',58),
 	(1001,'Epidermoide','N/A','N/A','N/A','N/A','N/A','N/A','N/A','N/A','N/A','Cisplatine-Etoposide',27),
 	(1001,'Non epidermoide','N/A','N/A','N/A','N/A','N/A','N/A','N/A','N/A','N/A','Carboplatine-Pemetrexed',22),
 	(1001,'Non epidermoide','N/A','N/A','N/A','N/A','N/A','N/A','N/A','N/A','N/A','Cisplatine-Pemetrexed',36),
@@ -248,8 +248,7 @@ INSERT INTO Chimiotherapie VALUES (1001,'Epidermoide','N/A','N/A','N/A','N/A','N
 	(1006,'Adenocarcinome','N/A','N/A','Negatif','Negatif','Negatif','Negatif','Negatif','0','N/A','Atezolizumab-Bevacizumab-Carboplatine-Paclitaxel',6),
 	(1006,'Adenocarcinome','N/A','N/A','Negatif','Negatif','Negatif','Negatif','Negatif','1','N/A','Atezolizumab-Bevacizumab-Carboplatine-Paclitaxel',6),
 	(1006,'Adenocarcinome','N/A','N/A','Negatif','Negatif','Negatif','Negatif','Negatif','0','N/A','Atezolizumab-Carboplatine-nabPaclitaxel',7);
-
-INSERT INTO Chimiothrapie VALUES (1006,'Adenocarcinome','N/A','N/A','Negatif','Negatif','Negatif','Negatif','Negatif','1','N/A','Atezolizumab-Carboplatine-nabPaclitaxel',7),
+INSERT INTO chimiotherapie VALUES (1006,'Adenocarcinome','N/A','N/A','Negatif','Negatif','Negatif','Negatif','Negatif','1','N/A','Atezolizumab-Carboplatine-nabPaclitaxel',7),
 	(1006,'Adenocarcinome','N/A','N/A','Negatif','Negatif','Negatif','Negatif','Negatif','0','N/A','Nivolumab-Ipilimumab',52),
 	(1006,'Adenocarcinome','N/A','N/A','Negatif','Negatif','Negatif','Negatif','Negatif','1','N/A','Nivolumab-Ipilimumab',52),
 	(1006,'Adenocarcinome','N/A','N/A','Negatif','Negatif','Negatif','Negatif','Negatif','0','N/A','Nivolumab-Ipilimumab-Carboplatine-Pemetrexed',53),
