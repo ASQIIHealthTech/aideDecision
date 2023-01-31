@@ -219,3 +219,8 @@ padding-left: 50px ;
   font-weight: normal;
 }
 
+button.protocole {
+  background: none;
+  border: none;
+}
+

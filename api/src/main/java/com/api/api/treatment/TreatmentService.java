@@ -45,5 +45,14 @@ public class TreatmentService {
         }
     }
 
+    public List<Object[]> getProtocoleDetails(Map<String, String> paylaod) throws TreatmentException {
+
+        List<Object[]> protocoleDetails = treatmentRepository.findProtocoleDetails(paylaod.get("protocole"));
+        if (protocoleDetails.isEmpty()) {
+            throw new TreatmentException("Coudn't load Protocole Details");
+        }
+        return protocoleDetails;
+    }
+
 
 }

@@ -1,14 +1,14 @@
 function getSelected(element) {
-  var selected = [... element.options]
-                  .filter(option => option.selected)
-                  .map(option => option.value);
-  
+  var selected = [...element.options]
+    .filter((option) => option.selected)
+    .map((option) => option.value);
+
   return selected;
 }
 
 function disbaleEnableInput(selectElement, inputElement, value) {
   if (selectElement.value == value) {
-      inputElement.disabled = true;
+    inputElement.disabled = true;
   } else {
     inputElement.disabled = false;
   }
@@ -16,15 +16,21 @@ function disbaleEnableInput(selectElement, inputElement, value) {
 
 function date(date_cure) {
   date = new Date(date_cure);
-  document.getElementById("first-date").innerHTML = `Cure I : ${date.toDateString()}`;
+  document.getElementById(
+    "first-date"
+  ).innerHTML = `Cure I : ${date.toDateString()}`;
 }
 
 function dategenerator(date_cure, intercure) {
   date = new Date(date_cure);
-  document.getElementById("first-date").innerHTML = `Cure I : ${date.toDateString()}`;
+  document.getElementById(
+    "first-date"
+  ).innerHTML = `Cure I : ${date.toDateString()}`;
   new_cure = new Date();
   new_cure.setDate(date.getDate() + intercure);
-  document.getElementById("second-date").innerHTML = `Cure II : ${new_cure.toDateString()}`;
+  document.getElementById(
+    "second-date"
+  ).innerHTML = `Cure II : ${new_cure.toDateString()}`;
 }
 
 function date_cure(date, jourProd) {
@@ -32,32 +38,50 @@ function date_cure(date, jourProd) {
   date_de_traitement = new Date(date);
   output_date = new Date();
   output_date.setDate(date_de_traitement.getDate() + jourProd - 1);
-  document.getElementById("date-apres-prod").innerHTML = output_date.toDateString();
+  document.getElementById("date-apres-prod").innerHTML =
+    output_date.toDateString();
 }
 
-function createPecSelect(options) {
-
+function createSelect(options, id, value) {
   var select = document.createElement("select");
-  select.id = "pec-select"
-  for (var i=0; i <Object.keys(options).length; i++) {
+  select.id = id;
+  for (var i = 0; i < Object.keys(options).length; i++) {
+    var option = document.createElement("option");
+    option.value = value + i;
+    option.text = options[option.value];
+    select.appendChild(option);
+  }
+
+  return select;
+}
+
+function createProtocoleSelect(prtocoleArray) {
+  var select = document.createElement("select")
+  select.id = "protocole-select"
+  for (var i = 0; i < prtocoleArray.length; i++) {
     var option = document.createElement("option")
-    option.value = "pec"+i
-    option.text = options[option.value]
+    option.value = "protocole"+ i
+    option.text = prtocoleArray[i]
     select.appendChild(option)
   }
+  
 
-  return select
+  return select;
+
+} 
+
+function createErrProtocole(handleldEntity) {
+  var label = document.createElement("span");
+  label.style.cssText = "front-weight:bold;color:red";
+  label.innerHTML = "Coudn't generate " + handleldEntity;
+
+  return label;
 }
 
-function createProtocoleSelect(options) {
-
-  for(var i=0; i<options.length; i++) {
-    var span = document.createElement("span");
-    span.innerHTML = options[i]
-    var breakLine = document.createElement("br")
-    document.getElementById("protocole").appendChild(span)
-    document.getElementById("protocole").appendChild(breakLine)
-  }
-}
-
-export { getSelected, disbaleEnableInput, createPecSelect, createProtocoleSelect }
+export {
+  getSelected,
+  disbaleEnableInput,
+  createSelect,
+  createProtocoleSelect,
+  createErrProtocole
+};

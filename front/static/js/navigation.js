@@ -1,9 +1,10 @@
-import { getSelected, createPecSelect, createProtocoleSelect } from './scripts.js';
+import { getSelected, createSelect, createProtocoleSelect ,createErrProtocole } from './scripts.js';
 
 var ctnmUrl = "http://localhost:8080/api/consultation/ctnm";
 var tnmUrl = "http://localhost:8080/api/consultation/tnm";
 var pecUrl = "http://localhost:8080/api/consultation/pec";
 var traitementUrl = "http://localhost:8080/api/treatment/chimio";
+var protocoleUrl = "http://localhost:8080/api/treatment/getProtocole";
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -63,6 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (bilan_pre) {
         bilan_pre.addEventListener('click', navigate_bilan_pre);
     }
+
 
     function navigation_profil() {
          // get the data
@@ -317,7 +319,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("traitement").appendChild(label)
 
             // dynamically create a select and input tag holding the pec values
-            var select = createPecSelect(body)
+            var select = createSelect(body, "pec-select", "pec")
             var breakLine = document.createElement("br")
 
             document.getElementById("traitement").appendChild(select)
@@ -410,7 +412,18 @@ document.addEventListener("DOMContentLoaded", function () {
             }).then(res => res.json())
             .then(body => {
                 console.log(body['protocole'])
-                createProtocoleSelect(body['protocole'])
+                var select = createProtocoleSelect(body['protocole'])
+                var breakLine = document.createElement("br")
+                var btn = document.createElement("input")
+                btn.id = "protocole-continue"
+                btn.classList.add("btn")
+                btn.value = "Continuer"
+                btn.type = "submit"
+
+                document.getElementById('protocole').appendChild(select)
+                document.getElementById('protocole').appendChild(breakLine)
+                document.getElementById('protocole').appendChild(btn)
+
 
             }).catch(error => {
                 console.log(error)
@@ -423,6 +436,31 @@ document.addEventListener("DOMContentLoaded", function () {
             container.appendChild(htmlBlock)
         }
         document.getElementById("protocole-h").click()
+    }
+
+    function navigate_protocole(protocoleName) {
+
+        let data = {
+            "protocole": `${protocoleName}`
+        }
+        console.log(data)
+
+        fetch(protocoleUrl, {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(data)
+        }).then(res => res.json())
+        .then(body => {
+            console.log(body)
+
+        }).catch(error => {
+            console.log(error)
+            var errLabel = createErrProtocole("protocole");
+            document.getElementById("protocole").appendChild(errLabel)
+
+        })
     }
 
 });

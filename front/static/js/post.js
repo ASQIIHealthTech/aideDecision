@@ -79,10 +79,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.log("An error occured saving the Patient");
             } else {
                 /* For deployment */ 
-                //window.location.replace("../../templates/index_1.html");
+                window.location.replace("../../templates/index_1.html");
                 
                 /* For developpment */
-                window.location.replace("templates/index_1.html");
+                //window.location.replace("templates/index_1.html");
             }
         }).catch(error =>  {
             console.log("Error occured saving the Patient");

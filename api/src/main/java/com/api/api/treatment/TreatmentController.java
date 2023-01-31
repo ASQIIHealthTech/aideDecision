@@ -39,4 +39,23 @@ public class TreatmentController {
         }
     }
 
+    @PostMapping(value = "getProtocole")
+    public ResponseEntity<String> getProtocoleDetails(@RequestBody Map<String,String> payload) {
+       try {
+        List<Object[]> protocoleDetails = treatmentService.getProtocoleDetails(payload);
+        JSONObject response = new JSONObject();
+        response.put("intercure", protocoleDetails.get(0));
+        response.put("molecule", protocoleDetails.get(1));
+        response.put("dose", protocoleDetails.get(2));
+        response.put("unite", protocoleDetails.get(3));
+        response.put("jour_prod", protocoleDetails.get(4));
+        response.put("nb_cures", protocoleDetails.get(5));
+
+        return ResponseEntity.ok().body(response.toString());
+        
+       } catch (TreatmentException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+       }
+    }
+
 }
