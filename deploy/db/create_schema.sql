@@ -13,3 +13,14 @@ CREATE TABLE IF NOT EXISTS chimiotherapie (
     `Protocole` VARCHAR(48) CHARACTER SET utf8,
     `id_protocole` INT
 );
+
+CREATE TABLE IF NOT EXISTS protocole (
+    `id_protocole` INT,
+    `protocole` VARCHAR(48) CHARACTER SET utf8,
+    `intercure` VARCHAR(2) CHARACTER SET utf8,
+    `molecule`  VARCHAR(15) CHARACTER SET utf8,
+    `dose` VARCHAR(10) CHARACTER SET utf8,
+    `unite` VARCHAR(11) CHARACTER SET utf8,
+    `jour_prod` VARCHAR(14) CHARACTER SET utf8,
+    `voie_adm` VARCHAR(5) CHARACTER SET utf8
+)
