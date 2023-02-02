@@ -13,7 +13,7 @@ DOCKER_COMPOSE=$PROJECT_PATH/deploy/docker-compose.yml
 
 if [ $# -ne 1 ] 
 then
-    echo "Usage: $0 [ build | destroy ]"
+    echo "Usage: $0 [ build | clean ]"
     echo "Please run help to see description"
     exit 1
 fi
