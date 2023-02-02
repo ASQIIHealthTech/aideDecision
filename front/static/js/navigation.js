@@ -439,7 +439,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function navigate_protocole(protocoleName) {
-
+        
         let data = {
             "protocole": `${protocoleName}`
         }
