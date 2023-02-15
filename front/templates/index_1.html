@@ -150,7 +150,7 @@
                 onclick="openOnglet(event, 'bilan-pre', 'onglet');">Bilan
                 preoperatoire et pre-radiotherapie</button>
               <button id="traitement-h" class="btn btn-light col-sm-1"
-                onclick="openOnglet(event, 'traitement', 'onglet');">Traitement</button>
+                onclick="openOnglet(event, 'traitement', 'onglet');">Prise en charge</button>
               <button id="protocole-h" class="btn btn-light col-sm-1"
                 onclick="openOnglet(event, 'protocole', 'onglet');">Protocole</button>
               <button id="ordonnance-h" class="btn btn-light col-sm-1"
@@ -974,6 +974,80 @@
                 </div>
 
                 <div id="ordonnance" class="onglet">
+                  <h2>Traitement </h2>
+                  <form class="" action="index_phase8.php" method="get">
+
+
+
+                    <label for="poid">Poids:</label>
+                    <label for="taille">Taille:</label>
+
+
+
+
+
+                    <label for="creatinine">Créatinine:</label>
+                    <label for="formule">Formule:</label>
+
+                    <label for='clcr'> <span class='green'><span class='green'><svg xmlns='http://www.w3.org/2000/svg'
+                            width='16' height='16' fill='currentColor' class='bi bi-calculator-fill'
+                            viewBox='0 0 16 16'>
+                            <path
+                              d='M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm2 .5v2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0-.5.5zm0 4v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5zM4.5 9a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM4 12.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5zM7.5 6a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM7 9.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5zm.5 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zM10 6.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5zm.5 2.5a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-.5-.5h-1z' />
+                          </svg></span></span> Clairance de la créatinine :</label>
+
+
+                    <label for="Protocole">Nom du Protocole:</label></br>
+                    <label for="intercure">Intercure:</label>
+                    <label for="nbr_cures">Nombre de cures:</label>
+                    <label for="date_debut_traitement">Date Debut traitement:</label>
+
+
+
+
+                    <table class="table" border="1">
+                      <thead class="thead-light">
+
+
+                        <tr>
+                          <th>Molécule</th>
+                          <th>Dose</th>
+                          <th>Unité</th>
+                          <th>Jour Prod</th>
+                          <th>Dosage calculé</th>
+                          <th><span class='green'>Dose adaptee</span></th>
+
+
+                        </tr>
+                      </thead>
+
+
+
+                      <td>molecule</td>
+                      <td>dose</td>
+                      <td>unité</td>
+                      <td>jour_prod</td>
+                      <td><span class='green'>dosage_calcule</span></td>
+                      <td><input type='number' name='' id='dose_adaptee' placeholder='Dose' value="" step='any'></td>
+                      </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </table>
+
+                    <input type='submit' value='Valider'>
+
+
                 </div>
 
                 </form>

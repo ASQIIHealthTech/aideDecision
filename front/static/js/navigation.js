@@ -1,4 +1,4 @@
-import { getSelected, createSelect, createProtocoleSelect ,createErrProtocole } from './scripts.js';
+import { getSelected, createSelect, createProtocoleSelect, createErrProtocole } from './scripts.js';
 
 var ctnmUrl = "http://localhost:8080/api/consultation/ctnm";
 var tnmUrl = "http://localhost:8080/api/consultation/tnm";
@@ -6,10 +6,11 @@ var pecUrl = "http://localhost:8080/api/consultation/pec";
 var traitementUrl = "http://localhost:8080/api/treatment/chimio";
 var protocoleUrl = "http://localhost:8080/api/treatment/getProtocole";
 
+
 document.addEventListener("DOMContentLoaded", function () {
 
     var profil_button = document.getElementById("profil-continue");
-    var habitude_button = document.getElementById("habitude-continue");    
+    var habitude_button = document.getElementById("habitude-continue");
     var antcd_button = document.getElementById("atcd-continue");
     var clinique_button = document.getElementById("clinique-continue");
     var examen_button = document.getElementById("examen-continue");
@@ -53,11 +54,11 @@ document.addEventListener("DOMContentLoaded", function () {
         ctnm_button.addEventListener('click', navigate_ctnm);
     }
 
-    if(anatomo_button) {
+    if (anatomo_button) {
         anatomo_button.addEventListener('click', navigate_anatomo);
     }
 
-    if(bilan_ex) {
+    if (bilan_ex) {
         bilan_ex.addEventListener('click', navigate_bilan);
     }
 
@@ -67,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     function navigation_profil() {
-         // get the data
+        // get the data
         var sexe = document.getElementById("sexe-select").value;
         var age = document.getElementById("age").value;
 
@@ -83,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("habitude-h").click();
 
         // display data
-        document.getElementById("sexe-span").innerHTML =  sexe + "&nbsp &nbsp &nbsp &nbsp";
+        document.getElementById("sexe-span").innerHTML = sexe + "&nbsp &nbsp &nbsp &nbsp";
         document.getElementById("age-span").innerHTML = age + "&nbsp &nbsp &nbsp &nbsp";
     };
 
@@ -106,14 +107,14 @@ document.addEventListener("DOMContentLoaded", function () {
         //display the data
         if (tabac_actif == 'Oui') {
             document.getElementById("tabagisme-span").innerHTML = "Actif &nbsp &nbsp &nbsp &nbsp";
-            document.getElementById("pa-span").innerHTML = paquet + "&nbsp &nbsp &nbsp &nbsp"; 
+            document.getElementById("pa-span").innerHTML = paquet + "&nbsp &nbsp &nbsp &nbsp";
         } else {
             document.getElementById("tabagisme-span").innerHTML = "Passif &nbsp &nbsp &nbsp &nbsp";
             document.getElementById("pa-display").setAttribute("hidden", "");
-        } 
+        }
     };
 
-    
+
     function navigation_antcd() {
 
         // get the data
@@ -141,7 +142,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("atcd-chir-span").innerHTML = atcd_chirugie;
         document.getElementById("atcd-thor-span").innerHTML = atcd_thorique;
         document.getElementById("atcd-fam-span").innerHTML = atcd_fam;
-        
+
     };
 
     function navigation_clinique() {
@@ -151,7 +152,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         //navigate to the next onglet
         document.getElementById("examen-h").click();
-        
+
     };
 
     function navigation_examen() {
@@ -182,7 +183,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("taille-span").innerHTML = taille + "cm" + "&nbsp &nbsp &nbsp &nbsp";
         document.getElementById("oms-span").innerHTML = oms + "&nbsp &nbsp &nbsp &nbsp";
         document.getElementById("spo2-span").innerHTML = spo2 + "&nbsp &nbsp &nbsp &nbsp";
-        
+
     };
 
     function navigate_imagerie() {
@@ -213,15 +214,15 @@ document.addEventListener("DOMContentLoaded", function () {
             },
             body: JSON.stringify(data),
         }).then(res => res.json())
-        .then((body) => {
-            let display = document.getElementById("ctnm-display");
-            let span = document.getElementById("ctnm-span");
-            console.log(body["ctnm"]);
-            display.removeAttribute("hidden");
-            span.innerHTML = body["ctnm"];
-        }).catch(error => {
-            console.log(error)
-        })
+            .then((body) => {
+                let display = document.getElementById("ctnm-display");
+                let span = document.getElementById("ctnm-span");
+                console.log(body["ctnm"]);
+                display.removeAttribute("hidden");
+                span.innerHTML = body["ctnm"];
+            }).catch(error => {
+                console.log(error)
+            })
 
         document.getElementById("antomo-h").click();
 
@@ -234,12 +235,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function navigate_bilan() {
-        var petscan = document.getElementById("pet-scan").value; 
-        var tdmabdo = document.getElementById("tdm-abdo").value; 
-        var tdmcere = document.getElementById("tdm-cere").value; 
-        var scin = document.getElementById("scin").value; 
-        var irmcere = document.getElementById("irm-cere").value; 
-        var irmrachid = document.getElementById("irm-rachid").value; 
+        var petscan = document.getElementById("pet-scan").value;
+        var tdmabdo = document.getElementById("tdm-abdo").value;
+        var tdmcere = document.getElementById("tdm-cere").value;
+        var scin = document.getElementById("scin").value;
+        var irmcere = document.getElementById("irm-cere").value;
+        var irmrachid = document.getElementById("irm-rachid").value;
 
         let data = {
             "petscan": petscan,
@@ -257,21 +258,21 @@ document.addEventListener("DOMContentLoaded", function () {
             headers: {
                 "Content-type": "application/json"
             },
-            body: JSON.stringify(data), 
+            body: JSON.stringify(data),
         }).then(res => res.json())
-        .then(body => {
-            console.log(body['tnm']);
-            console.log(body['stade']);
-            document.getElementById("tnm-display").removeAttribute("hidden");
-            document.getElementById("tnm-span").innerHTML += body['tnm'];
-            document.getElementById("stade-display").removeAttribute("hidden");
-            document.getElementById("stade-span").innerHTML += body['stade'];
-        }).catch(error => {
-            console.log(error);
-        })
+            .then(body => {
+                console.log(body['tnm']);
+                console.log(body['stade']);
+                document.getElementById("tnm-display").removeAttribute("hidden");
+                document.getElementById("tnm-span").innerHTML += body['tnm'];
+                document.getElementById("stade-display").removeAttribute("hidden");
+                document.getElementById("stade-span").innerHTML += body['stade'];
+            }).catch(error => {
+                console.log(error);
+            })
 
         document.getElementById("bilan-pre-h").click();
-    
+
     }
 
     function navigate_bilan_pre() {
@@ -297,10 +298,10 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             vems = "SUP1"
         }
-        
+
         let data = {
             "histo": `${histo}`,
-            "paco2":  `${paco2}`,
+            "paco2": `${paco2}`,
             "vems": `${vems}`,
             "ps": `${ps}`
         }
@@ -311,43 +312,43 @@ document.addEventListener("DOMContentLoaded", function () {
             },
             body: JSON.stringify(data)
         }).then(res => res.json())
-        .then(body => {
-            
-             // create the label
-            var label = document.createElement("label")
-            label.innerHTML = "Prise en charge:&nbsp;&nbsp"
-            document.getElementById("traitement").appendChild(label)
+            .then(body => {
 
-            // dynamically create a select and input tag holding the pec values
-            var select = createSelect(body, "pec-select", "pec")
-            var breakLine = document.createElement("br")
+                // create the label
+                var label = document.createElement("label")
+                label.innerHTML = "Prise en charge:&nbsp;&nbsp"
+                document.getElementById("traitement").appendChild(label)
 
-            document.getElementById("traitement").appendChild(select)
-            
-            // break line
-            document.getElementById("traitement").appendChild(breakLine)
+                // dynamically create a select and input tag holding the pec values
+                var select = createSelect(body, "pec-select", "pec")
+                var breakLine = document.createElement("br")
 
-            var button = document.createElement("input")
-            button.classList.add("btn")
-            button.type = "submit"
-            button.value = "Continuer"
-            button.id = "traitement-continue"
-            button.addEventListener('click', navigate_traitement)
-            document.getElementById("traitement").appendChild(button)
+                document.getElementById("traitement").appendChild(select)
 
-            document.getElementById("traitement-h").click()
-        }).catch(error => {
-            var label = document.createElement("label")
-            label.innerHTML = error.message
-        })
+                // break line
+                document.getElementById("traitement").appendChild(breakLine)
+
+                var button = document.createElement("input")
+                button.classList.add("btn")
+                button.type = "submit"
+                button.value = "Continuer"
+                button.id = "traitement-continue"
+                button.addEventListener('click', navigate_traitement)
+                document.getElementById("traitement").appendChild(button)
+
+                document.getElementById("traitement-h").click()
+            }).catch(error => {
+                var label = document.createElement("label")
+                label.innerHTML = error.message
+            })
     }
 
     function navigate_traitement() {
-        
+
         var pec = document.getElementById("pec-select")
         var traitement = pec.options[pec.selectedIndex].innerHTML
         console.log(traitement)
-        if(traitement == "Chimiotherapie") {
+        if (traitement == "Chimiotherapie") {
             var histo = document.getElementById("hist").value
             var stade = document.getElementById("stade-span").innerHTML
             var vems = document.getElementById("vems").value
@@ -372,12 +373,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 clairance = "SUP60"
             } else if (clairance < 60 && clairance >= 30) {
                 clairance = "INF60"
-            } else if (clairance < 30 && clairance > 0){
+            } else if (clairance < 30 && clairance > 0) {
                 clairance = "INF30"
             } else {
                 clairance = "N/A"
             }
-            
+
             var audiometrie = document.getElementById("audiometrie").value
             var egfr = document.getElementById("egfr").value
             var alk = document.getElementById("alk").value
@@ -389,7 +390,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 ps = "N/A"
             }
 
-            let data = { 
+            let data = {
                 "type_histo": `${type_histo}`,
                 "clairance": `${clairance}`,
                 "audiometrie": `${audiometrie}`,
@@ -410,24 +411,24 @@ document.addEventListener("DOMContentLoaded", function () {
                 },
                 body: JSON.stringify(data)
             }).then(res => res.json())
-            .then(body => {
-                console.log(body['protocole'])
-                var select = createProtocoleSelect(body['protocole'])
-                var breakLine = document.createElement("br")
-                var btn = document.createElement("input")
-                btn.id = "protocole-continue"
-                btn.classList.add("btn")
-                btn.value = "Continuer"
-                btn.type = "submit"
+                .then(body => {
+                    console.log(body['protocole'])
+                    var select = createProtocoleSelect(body['protocole'])
+                    var breakLine = document.createElement("br")
+                    var btn = document.createElement("input")
+                    btn.id = "protocole-continue"
+                    btn.classList.add("btn")
+                    btn.value = "Continuer"
+                    btn.type = "submit"
 
-                document.getElementById('protocole').appendChild(select)
-                document.getElementById('protocole').appendChild(breakLine)
-                document.getElementById('protocole').appendChild(btn)
+                    document.getElementById('protocole').appendChild(select)
+                    document.getElementById('protocole').appendChild(breakLine)
+                    document.getElementById('protocole').appendChild(btn)
 
 
-            }).catch(error => {
-                console.log(error)
-            })
+                }).catch(error => {
+                    console.log(error)
+                })
 
         } else {
             var container = document.getElementById("protocole")
@@ -439,7 +440,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function navigate_protocole(protocoleName) {
-        
+
         let data = {
             "protocole": `${protocoleName}`
         }
@@ -452,15 +453,15 @@ document.addEventListener("DOMContentLoaded", function () {
             },
             body: JSON.stringify(data)
         }).then(res => res.json())
-        .then(body => {
-            console.log(body)
+            .then(body => {
+                console.log(body)
 
-        }).catch(error => {
-            console.log(error)
-            var errLabel = createErrProtocole("protocole");
-            document.getElementById("protocole").appendChild(errLabel)
+            }).catch(error => {
+                console.log(error)
+                var errLabel = createErrProtocole("protocole");
+                document.getElementById("protocole").appendChild(errLabel)
 
-        })
+            })
     }
 
 });

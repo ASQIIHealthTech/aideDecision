@@ -8,7 +8,7 @@
 
 #! /bin/bash
 
-PROJECT_PATH=$HOME/Desktop/mcda
+PROJECT_PATH=$HOME/Desktop/PFE/aideDecision
 DOCKER_COMPOSE=$PROJECT_PATH/deploy/docker-compose.yml
 
 if [ $# -ne 1 ] 
