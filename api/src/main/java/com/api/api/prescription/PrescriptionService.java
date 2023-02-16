@@ -13,4 +13,9 @@ public interface PrescriptionService {
     PrescriptionDTO updatePrescription(Prescription med);
 
     PrescriptionDTO retrievePrescription(Long id) throws PrescriptionException;
+
+    double calcule(Prescription pres);
+
+    double calculerDosageParUnite(Prescription pres);
+
 }

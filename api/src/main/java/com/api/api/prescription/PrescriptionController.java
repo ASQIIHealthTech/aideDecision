@@ -63,4 +63,18 @@ public class PrescriptionController {
 		return ms.updatePrescription(Prescription);
 	}
 
+	// http://localhost:8080/Prescription/calcule
+	@GetMapping("/calcule")
+	@ResponseBody
+	public double calcule(@RequestBody Prescription pres) {
+		return ms.calcule(pres);
+	}
+
+	// http://localhost:8080/Prescription/calculer-dosage
+	@GetMapping("/calculer-dosage")
+	@ResponseBody
+	public double calculerDosageParUnite(@RequestBody Prescription pres) {
+		return ms.calculerDosageParUnite(pres);
+	}
+
 }

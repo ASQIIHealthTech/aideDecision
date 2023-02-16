@@ -31,6 +31,13 @@ public class Prescription {
     private String molecule;
     private int dose;
     private String unite;
+    private double poids;
+    private double taille;
+    private double age;
+    private String formule;
+    private String sexe;
+    private double clcr;
+    private double creatinine; 
     @Temporal(TemporalType.DATE)
     private Date jour_prod;
 
