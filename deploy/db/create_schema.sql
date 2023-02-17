@@ -24,3 +24,21 @@ CREATE TABLE IF NOT EXISTS protocole (
     `jour_prod` VARCHAR(14) CHARACTER SET utf8,
     `voie_adm` VARCHAR(5) CHARACTER SET utf8
 )
+
+CREATE TABLE IF NOT EXISTS prescription (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    molecule VARCHAR(255) NOT NULL,
+    dose INT NOT NULL,
+    unite VARCHAR(255) NOT NULL,
+    poids DOUBLE NOT NULL,
+    taille DOUBLE NOT NULL,
+    age DOUBLE NOT NULL,
+    formule VARCHAR(255) NOT NULL,
+    sexe VARCHAR(255) NOT NULL,
+    clcr DOUBLE NOT NULL,
+    creatinine DOUBLE NOT NULL,
+    jour_prod DATE NOT NULL,
+    PRIMARY KEY (id),
+    UNIQUE KEY uk_molecule_dose_unite (molecule, dose, unite)
+);
+
