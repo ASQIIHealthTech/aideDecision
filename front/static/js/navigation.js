@@ -65,6 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (bilan_pre) {
         bilan_pre.addEventListener('click', navigate_bilan_pre);
     }
+    
 
 
     function navigation_profil() {

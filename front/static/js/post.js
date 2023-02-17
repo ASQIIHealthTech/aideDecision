@@ -4,9 +4,13 @@ var save_patient_url = "http://localhost:8080/api/patients/new";
 document.addEventListener("DOMContentLoaded", function () {
   var save_button = document.getElementById("save-btn");
   var save_patient_button = document.getElementById("save-btn-pat");
+  var ordtable = document.getElementById("ordTable");
 
   if (save_button) {
     save_button.addEventListener("click", saveConsultation);
+  }
+  if (ordtable) {
+    ordtable.addEventListener("load", getOrd);
   }
 
   if (save_patient_button) {
@@ -112,19 +116,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function getOrd() {
     fetch("http://localhost:8080/Prescription/retrieve-all-Prescription")
-      .then((response) => response.json())
+      .then((response) => {
+        response.json();
+        console.log(response.json());
+      })
       .then((data) => {
         const table = document.querySelector("#ordTable tbody");
         data.forEach((item) => {
           const row = table.insertRow();
           const cell1 = row.insertCell();
           cell1.textContent = item.Molécule;
+          console.log(item.Molécule);
           const cell2 = row.insertCell();
           cell2.textContent = item.Dose;
+          console.log(item.Dose);
           const cell3 = row.insertCell();
           cell3.textContent = item.Unité;
+          console.log(item.Unité);
           const cell4 = row.insertCell();
           cell4.textContent = item.JourProd;
+          console.log(item.JourProd);
         });
       })
       .catch((error) => console.error(error));
