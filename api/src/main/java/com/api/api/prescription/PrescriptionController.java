@@ -21,7 +21,7 @@ public class PrescriptionController {
 	@Autowired
 	PrescriptionService ms;
 
-	// http://localhost:8080/Prescription/retrieve-all-Prescription
+	// http://localhost:8080/Prescription/retrieve-all-Prescriptions
 	@GetMapping("/retrieve-all-Prescriptions")
 	@ResponseBody
 	public List<PrescriptionDTO> retreiveAllPrescriptions() {

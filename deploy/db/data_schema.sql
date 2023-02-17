@@ -610,9 +610,9 @@ INSERT INTO protocole VALUES (1,'Afatinib','-','Afatinib','40','mg/j','tous les 
 	(67,'Vemurafenib-Dabrafenib','-','Vemurafenib','960','mg/j','tous les jours','Orale'),
 	(67,'Vemurafenib-Dabrafenib','-','Dabrafenib','150','mg x2/j','tous les jours','Orale');
 
-INSERT INTO prescription (molecule, dose, unite, poids, taille, age, formule, sexe, clcr, creatinine, jour_prod)
+INSERT INTO prescription 
 VALUES 
-('Carboplatine', 50, 'auc', 70.0, 180.0, 40.0, 'MDRD', 'homme', 80.0, 1.2, '2023-02-17'),
-('nabPaclitaxel', 100, 'mg/m2', 70.0, 180.0, 40.0, 'MDRD', 'femme', 80.0, 1.2, '2023-02-17');
+(1,'Carboplatine', 50, 'auc', 70.0, 180.0, 40.0, 'MDRD', 'homme', 80.0, 1.2, '2023-02-17'),
+(2,'nabPaclitaxel', 100, 'mg/m2', 70.0, 180.0, 40.0, 'autre', 'femme', 80.0, 1.2, '2023-02-17');
 
 
